@@ -88,10 +88,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* ------------------- KEY OVERRIDE ------------------- */
 
 const key_override_t delete_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DEL);
-const key_override_t pgup_key_override = ko_make_basic(MOD_MASK_CTRL, KC_UP, KC_PGUP);
-const key_override_t pgdn_key_override = ko_make_basic(MOD_MASK_CTRL, KC_DOWN, KC_PGDN);
-const key_override_t home_key_override = ko_make_basic(MOD_MASK_CTRL, KC_LEFT, KC_HOME);
-const key_override_t end_key_override = ko_make_basic(MOD_MASK_CTRL, KC_RGHT, KC_END);
+const key_override_t pgup_key_override = ko_make_with_layers_and_negmods(MOD_MASK_CTRL, KC_UP, KC_PGUP, ~0, MOD_MASK_GUI);
+const key_override_t pgdn_key_override = ko_make_with_layers_and_negmods(MOD_MASK_CTRL, KC_DOWN, KC_PGDN, ~0, MOD_MASK_GUI);
+const key_override_t home_key_override = ko_make_with_layers_and_negmods(MOD_MASK_CTRL, KC_LEFT, KC_HOME, ~0, MOD_MASK_GUI);
+const key_override_t end_key_override = ko_make_with_layers_and_negmods(MOD_MASK_CTRL, KC_RGHT, KC_END, ~0, MOD_MASK_GUI);
 
 // This globally defines all key overrides to be used
 const key_override_t **key_overrides = (const key_override_t *[]){
