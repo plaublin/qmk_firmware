@@ -55,6 +55,12 @@
 #define RGBLIGHT_LAYERS
 #define RGBLIGHT_LED_COUNT 9
 
+// Turn off the LEDs when machine is going to sleep
+#define RGBLIGHT_SLEEP
+
+// Turn om the lights even if RGB_OFF is set
+#define RGBLIGHT_LAYERS_OVERRIDE_RGB_OFF
+
 // No need for the effects
 #undef RGBLIGHT_EFFECT_BREATHING
 #undef RGBLIGHT_EFFECT_RAINBOW_MOOD

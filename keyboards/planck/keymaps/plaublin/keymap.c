@@ -48,7 +48,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     /* Numbers
      * ,-----------------------------------------------------------------------------------.
-     * | Tab  |  ` ~ |      |      |      |      |      |      |      |  - _ |  = + |TG Num|
+     * | Tab  |  ` ~ |  , < | . >  |      |      |      |      |      |  - _ |  = + |TG Num|
      * |------+------+------+------+------+------+------+------+------+------+------+------|
      * | Shift|  1 ! |  2 @ |  3 # |  4 $ |  5 % |  6 ^ |  7 & |  8 * |  9 ( |  0 ) |      |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -58,7 +58,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * `-----------------------------------------------------------------------------------'
      */
     [_NUMBERS] = LAYOUT_ortho_4x12(
-            _______ , KC_GRV  , KC_NO   , KC_NO   , KC_NO   , KC_NO   , KC_NO   , KC_NO   , KC_NO   , KC_MINS , KC_EQL  , TG(_NUMBERS) ,
+            _______ , KC_GRV  , KC_COMM , KC_DOT  , KC_NO   , KC_NO   , KC_NO   , KC_NO   , KC_NO   , KC_MINS , KC_EQL  , TG(_NUMBERS) ,
             _______ , KC_1    , KC_2    , KC_3    , KC_4    , KC_5    , KC_6    , KC_7    , KC_8    , KC_9    , KC_0    , _______ ,
             _______ , KC_NO   , KC_NO   , KC_LCBR , KC_LBRC , KC_LPRN , KC_RPRN , KC_RBRC , KC_RCBR , KC_NO   , KC_NO   , _______ ,
             _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , KC_BSLS , _______ , _______ , _______
@@ -96,11 +96,11 @@ const key_override_t end_key_override = ko_make_with_layers_and_negmods(MOD_MASK
 // This globally defines all key overrides to be used
 const key_override_t **key_overrides = (const key_override_t *[]){
     &delete_key_override,
-        &pgup_key_override,
-        &pgdn_key_override,
-        &home_key_override,
-        &end_key_override,
-        NULL // Null terminate the array of overrides!
+    &pgup_key_override,
+    &pgdn_key_override,
+    &home_key_override,
+    &end_key_override,
+    NULL // Null terminate the array of overrides!
 };
 
 
@@ -108,23 +108,27 @@ const key_override_t **key_overrides = (const key_override_t *[]){
 
 // Define lighting layers
 const rgblight_segment_t PROGMEM my_dvorak_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-        {1, 8, HSV_TURQUOISE},
-        {0, 1, HSV_OFF}
+        {0, 3, HSV_OFF},
+        {3, 1, HSV_TURQUOISE},
+        {4, 5, HSV_OFF}
         );
 
 const rgblight_segment_t PROGMEM my_qwerty_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-        {1, 8, HSV_TEAL},
-        {0, 1, HSV_OFF}
+        {0, 4, HSV_OFF},
+        {4, 1, HSV_BLUE},
+        {5, 4, HSV_OFF}
         );
 
 const rgblight_segment_t PROGMEM my_numbers_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-        {1, 8, HSV_SPRINGGREEN},
-        {0, 1, HSV_OFF}
+        {0, 5, HSV_OFF},
+        {5, 1, HSV_SPRINGGREEN},
+        {6, 3, HSV_OFF}
         );
 
 const rgblight_segment_t PROGMEM my_special_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-        {1, 8, HSV_RED},
-        {0, 1, HSV_OFF}
+        {0, 6, HSV_OFF},
+        {6, 1, HSV_RED},
+        {7, 2, HSV_OFF}
         );
 
 // Now define the array of layers. Later layers take precedence
@@ -143,11 +147,11 @@ void keyboard_post_init_user(void) {
 
 layer_state_t default_layer_state_set_user(layer_state_t state) {
     rgblight_set_layer_state(0, layer_state_cmp(state, _DVORAK));
+    rgblight_set_layer_state(1, layer_state_cmp(state, _QWERTY));
     return state;
 }
 
 layer_state_t layer_state_set_user(layer_state_t state) {
-    rgblight_set_layer_state(1, layer_state_cmp(state, _QWERTY));
     rgblight_set_layer_state(2, layer_state_cmp(state, _NUMBERS));
     rgblight_set_layer_state(3, layer_state_cmp(state, _SPECIAL));
     return state;
