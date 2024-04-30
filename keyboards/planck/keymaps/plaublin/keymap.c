@@ -7,7 +7,7 @@ enum planck_layers {
     _QWERTY,
     _NUMBERS,
     _SPECIAL,
-    _GRAPHITE,
+    _MAYA,
     _CALLUM_SYM,
     _CALLUM_NAV,
     _CALLUM_NUM
@@ -81,18 +81,40 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
     [_SPECIAL] = LAYOUT_ortho_4x12(
             _______ , KC_F1   , KC_F2   , KC_F3   , KC_F4   , KC_NO   , KC_NO   , RGB_VAI , KC_VOLU , DF(_DVORAK)  , DF(_QWERTY) , _______ ,
-            _______ , KC_F5   , KC_F6   , KC_F7   , KC_F8   , KC_NO   , KC_NO   , RGB_VAD , KC_VOLD , DF(_GRAPHITE), KC_NO       , _______ ,
+            _______ , KC_F5   , KC_F6   , KC_F7   , KC_F8   , KC_NO   , KC_NO   , RGB_VAD , KC_VOLD , DF(_MAYA), KC_NO       , _______ ,
             _______ , KC_F9   , KC_F10  , KC_F11  , KC_F12  , KC_NO   , KC_NO   , RGB_TOG , KC_MUTE , KC_INS       , KC_DEL      , _______ ,
             _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______      , _______     , _______
             ),
 
-    [_GRAPHITE] = LAYOUT_ortho_4x12(
-            KC_B , KC_L , KC_D , KC_W           , KC_Z    , KC_NO, KC_NO, KC_QUOT, KC_F           , KC_O  , KC_U   , KC_J   ,
-            KC_N , KC_R , KC_T , KC_S           , KC_G    , KC_NO, KC_NO, KC_Y   , KC_H           , KC_A  , KC_E   , KC_I   ,
-            KC_Q , KC_X , KC_M , KC_C           , KC_V    , KC_NO, KC_NO, KC_K   , KC_P           , KC_DOT, KC_MINS, KC_SLSH,
-            KC_NO, KC_NO, KC_NO, MO(_CALLUM_SYM), KC_LSFT , KC_NO, KC_NO, KC_SPC , MO(_CALLUM_NAV), KC_NO , KC_NO  , KC_NO
+    /* Maya
+     * ,-----------------------------------------------------------------------------------.
+     * |   M  |   L  |   D  |   C  |   Z  |      |      |   V  |   F  |   O  |   U  |  .   |
+     * |------+------+------+------+------+------+------+------+------+------+------+------|
+     * |   N  |   R  |   T  |   S  |   B  |      |      |   Y  |   H  |   A  |  E   |  I   |
+     * |------+------+------+------+------+------+------+------+------+------+------+------|
+     * |   X  |   K  |   G  |   W  |   Q  |      |      |   J  |   P  |   '  |  ;   |  ,   |
+     * |------+------+------+------+------+------+------+------+------+------+------+------|
+     * |      |      |      |MO SYM|LSHIFT|             |SPACE |MO NAV|      |      |      |
+     * `-----------------------------------------------------------------------------------'
+     */
+    [_MAYA] = LAYOUT_ortho_4x12(
+            KC_M , KC_L , KC_D , KC_C           , KC_Z    , KC_NO, KC_NO, KC_V  , KC_F           , KC_O   , KC_U   , KC_DOT ,
+            KC_N , KC_R , KC_T , KC_S           , KC_B    , KC_NO, KC_NO, KC_Y  , KC_H           , KC_A   , KC_E   , KC_I   ,
+            KC_X , KC_K , KC_G , KC_W           , KC_Q    , KC_NO, KC_NO, KC_J  , KC_P           , KC_QUOT, KC_SCLN, KC_COMM,
+            KC_NO, KC_NO, KC_NO, MO(_CALLUM_SYM), KC_LSFT , KC_NO, KC_NO, KC_SPC, MO(_CALLUM_NAV), KC_NO  , KC_NO  , KC_NO
             ),
 
+    /* Callum Symbols
+     * ,-----------------------------------------------------------------------------------.
+     * | Esc~`|   (  |   {  |   [  |   ~  |      |      |   ^  |   ]  |   }  |   )  |  '   |
+     * |------+------+------+------+------+------+------+------+------+------+------+------|
+     * |   -  |  *   |   =  |   _  |   x  |      |      |   #  |OSMGUI|OSMALT|OSMCTL|OSMSFT|
+     * |------+------+------+------+------+------+------+------+------+------+------+------|
+     * |   +  |   |  |   @  |   /  |   %  |      |      |      |  \   |   &  |   ?  |  !   |
+     * |------+------+------+------+------+------+------+------+------+------+------+------|
+     * |      |      |      |MO SYM|LSHIFT|             |SPACE |MO NUM|      |      |      |
+     * `-----------------------------------------------------------------------------------'
+     */
     [_CALLUM_SYM] = LAYOUT_ortho_4x12(
             QK_GESC, KC_LBRC, KC_LCBR, KC_LPRN , KC_TILD, KC_NO, KC_NO, KC_CIRC, KC_RPRN        , KC_RCBR      , KC_RBRC      , KC_QUOT,
             KC_MINS, KC_ASTR, KC_EQL , KC_UNDS , KC_DLR , KC_NO, KC_NO, KC_HASH, OSM(MOD_RGUI)  , OSM(MOD_RALT), OSM(MOD_RCTL), OSM(MOD_RSFT),
@@ -100,13 +122,35 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             KC_NO  , KC_NO  , KC_NO  , KC_TRNS , KC_TRNS, KC_NO, KC_NO, KC_TRNS, MO(_CALLUM_NUM), KC_NO        , KC_NO        , KC_NO
             ),
 
+    /* Callum Navigation
+     * ,-----------------------------------------------------------------------------------.
+     * |  TAB | MUTE | VOL- | VOL+ |      |      |      |      | HOME |  UP  | END  |      |
+     * |------+------+------+------+------+------+------+------+------+------+------+------|
+     * |OSMSFT|OSMCTL|OSMALT|OSMGUI| BSPC |      |      |  ENT | LEFT | DOWN |RIGHT |      |
+     * |------+------+------+------+------+------+------+------+------+------+------+------|
+     * |DVORAK|      |      |      |      |      |      |      |      |      |      |      |
+     * |------+------+------+------+------+------+------+------+------+------+------+------|
+     * |      |      |      |MO NUM|LSHIFT|             |SPACE |MO NAV|      |      |      |
+     * `-----------------------------------------------------------------------------------'
+     */
     [_CALLUM_NAV] = LAYOUT_ortho_4x12(
-            KC_TAB       , KC_MUTE      , KC_VOLD      , KC_VOLU        , KC_NO  , KC_NO, KC_NO, KC_NO      , KC_HOME, KC_UP  , KC_END , KC_NO,
-            OSM(MOD_LSFT), OSM(MOD_LCTL), OSM(MOD_LALT), OSM(MOD_LGUI)  , KC_BSPC, KC_NO, KC_NO, KC_ENT     , KC_LEFT, KC_DOWN, KC_RGHT, KC_NO,
-            KC_NO        , KC_NO        , KC_NO        , KC_NO          , KC_NO  , KC_NO, KC_NO, DF(_DVORAK), KC_NO  , KC_NO  , KC_NO  , KC_NO,
-            KC_NO        , KC_NO        , KC_NO        , MO(_CALLUM_NUM), KC_TRNS, KC_NO, KC_NO, KC_TRNS    , KC_TRNS, KC_NO  , KC_NO  , KC_NO
+            KC_TAB       , KC_MUTE      , KC_VOLD      , KC_VOLU        , KC_NO  , KC_NO, KC_NO, KC_NO  , KC_HOME, KC_UP  , KC_END , KC_NO,
+            OSM(MOD_LSFT), OSM(MOD_LCTL), OSM(MOD_LALT), OSM(MOD_LGUI)  , KC_BSPC, KC_NO, KC_NO, KC_ENT , KC_LEFT, KC_DOWN, KC_RGHT, KC_NO,
+            DF(_DVORAK)  , KC_NO        , KC_NO        , KC_NO          , KC_NO  , KC_NO, KC_NO, KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO,
+            KC_NO        , KC_NO        , KC_NO        , MO(_CALLUM_NUM), KC_TRNS, KC_NO, KC_NO, KC_TRNS, KC_TRNS, KC_NO  , KC_NO  , KC_NO
             ),
 
+    /* Callum numbers
+     * ,-----------------------------------------------------------------------------------.
+     * |   1  |  2   |   3  |   4  |   5  |      |      |   6  |   7  |   8  |   9  |  0   |
+     * |------+------+------+------+------+------+------+------+------+------+------+------|
+     * |OSMSFT|OSMCTL|OSMALT|OSMGUI| F11  |      |      |  F12 |OSMGUI|OSMALT|OSMCTL|OSMSFT|
+     * |------+------+------+------+------+------+------+------+------+------+------+------|
+     * |  F1  |  F2  |  F3  |  F4  |  F5  |      |      |  F6  |  F7  |  F8  |  F9  |  F10 |
+     * |------+------+------+------+------+------+------+------+------+------+------+------|
+     * |      |      |      |MO SYM|LSHIFT|             |SPACE |MO NAV|      |      |      |
+     * `-----------------------------------------------------------------------------------'
+     */
     [_CALLUM_NUM] = LAYOUT_ortho_4x12(
             KC_1         , KC_2         , KC_3         , KC_4         , KC_5   , KC_NO, KC_NO, KC_6   , KC_7         , KC_8         , KC_9         , KC_0         ,
             OSM(MOD_LSFT), OSM(MOD_LCTL), OSM(MOD_LALT), OSM(MOD_LGUI), KC_F11 , KC_NO, KC_NO, KC_F12 , OSM(MOD_RGUI), OSM(MOD_RALT), OSM(MOD_RCTL), OSM(MOD_RSFT),
@@ -123,9 +167,9 @@ const key_override_t pgup_key_override = ko_make_with_layers_and_negmods(MOD_MAS
 const key_override_t pgdn_key_override = ko_make_with_layers_and_negmods(MOD_MASK_CTRL, KC_DOWN, KC_PGDN, ~0, MOD_MASK_GUI);
 const key_override_t home_key_override = ko_make_with_layers_and_negmods(MOD_MASK_CTRL, KC_LEFT, KC_HOME, ~0, MOD_MASK_GUI);
 const key_override_t end_key_override = ko_make_with_layers_and_negmods(MOD_MASK_CTRL, KC_RGHT, KC_END, ~0, MOD_MASK_GUI);
-const key_override_t graphite_shift_quote = ko_make_with_layers(MOD_MASK_SHIFT, KC_QUOT, KC_UNDS, 1 << _GRAPHITE);
-const key_override_t graphite_shift_minus = ko_make_with_layers(MOD_MASK_SHIFT, KC_MINS, KC_DQUO, 1 << _GRAPHITE);
-const key_override_t graphite_shift_slash = ko_make_with_layers(MOD_MASK_SHIFT, KC_SLSH, KC_LT, 1 << _GRAPHITE);
+const key_override_t maya_shift_quote = ko_make_with_layers(MOD_MASK_SHIFT, KC_QUOT, KC_UNDS, 1 << _MAYA);
+const key_override_t maya_shift_minus = ko_make_with_layers(MOD_MASK_SHIFT, KC_MINS, KC_DQUO, 1 << _MAYA);
+const key_override_t maya_shift_slash = ko_make_with_layers(MOD_MASK_SHIFT, KC_SLSH, KC_LT, 1 << _MAYA);
 
 // This globally defines all key overrides to be used
 const key_override_t **key_overrides = (const key_override_t *[]){
@@ -134,9 +178,9 @@ const key_override_t **key_overrides = (const key_override_t *[]){
     &pgdn_key_override,
     &home_key_override,
     &end_key_override,
-    &graphite_shift_quote,
-    &graphite_shift_minus,
-    &graphite_shift_slash,
+//    &maya_shift_quote,
+//    &maya_shift_minus,
+//    &maya_shift_slash,
     NULL // Null terminate the array of overrides!
 };
 
@@ -168,7 +212,7 @@ const rgblight_segment_t PROGMEM my_special_layer[] = RGBLIGHT_LAYER_SEGMENTS(
         {7, 2, HSV_OFF}
         );
 
-const rgblight_segment_t PROGMEM my_graphite_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+const rgblight_segment_t PROGMEM my_maya_layer[] = RGBLIGHT_LAYER_SEGMENTS(
         {0, 2, HSV_OFF},
         {2, 1, HSV_TEAL},
         {3, 6, HSV_OFF}
@@ -197,7 +241,7 @@ const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
         my_qwerty_layer,
         my_numbers_layer,
         my_special_layer,
-        my_graphite_layer,
+        my_maya_layer,
         my_callum_sym_layer,
         my_callum_nav_layer,
         my_callum_num_layer
@@ -212,7 +256,7 @@ void keyboard_post_init_user(void) {
 layer_state_t default_layer_state_set_user(layer_state_t state) {
     rgblight_set_layer_state(0, layer_state_cmp(state, _DVORAK));
     rgblight_set_layer_state(1, layer_state_cmp(state, _QWERTY));
-    rgblight_set_layer_state(4, layer_state_cmp(state, _GRAPHITE));
+    rgblight_set_layer_state(4, layer_state_cmp(state, _MAYA));
     return state;
 }
 
