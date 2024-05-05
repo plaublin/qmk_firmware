@@ -224,19 +224,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     /* Navigation/Numbers
      * ,-----------------------------------------------------------------------------------.
-     * |      | HOME |  UP  |  END | PGUP |      |      |  ? / |  & 7 |  * 8 |  ( 9 |  +   |
+     * | INS  | HOME |  UP  |  END | PGUP |      |      |  ? / |  & 7 |  * 8 |  ( 9 |  +   |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
      * | LSFT | LEFT | DOWN | RGHT | PGDN |      |      |  ) 0 |  ! 1 |  @ 2 |  # 3 |  _ - |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * |  INS |LCRL_T|LMTA_T|LALT_T|  DEL |      |      |   *  |  $ 4 |  % 5 |  ^ 6 |  + = |
+     * | DEL  |LCRL_T|LMTA_T|LALT_T| RALT |      |      |   *  |  $ 4 |  % 5 |  ^ 6 |  + = |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
      * |      |      |      |MO SYM| Bksp |             |Space |MO NUM|      |      |      |
      * `-----------------------------------------------------------------------------------'
      */
     [_NUMBERS_34] = LAYOUT_ortho_4x12(
-            KC_NO   , KC_HOME , KC_UP   , KC_END  , KC_PGUP , KC_NO, KC_NO , KC_SLSH , KC_7    , KC_8  , KC_9  , KC_PPLS ,
+            KC_INS  , KC_HOME , KC_UP   , KC_END  , KC_PGUP , KC_NO, KC_NO , KC_SLSH , KC_7    , KC_8  , KC_9  , KC_PPLS ,
             _______ , KC_LEFT , KC_DOWN , KC_RGHT , KC_PGDN , KC_NO, KC_NO , KC_0    , KC_1    , KC_2  , KC_3  , KC_MINS ,
-            KC_INS  , _______ , _______ , _______ , KC_DEL  , KC_NO, KC_NO , KC_ASTR , KC_4    , KC_5  , KC_6  , KC_EQL  ,
+            KC_DEL  , _______ , _______ , _______ , KC_RALT , KC_NO, KC_NO , KC_ASTR , KC_4    , KC_5  , KC_6  , KC_EQL  ,
             KC_NO   , KC_NO   , KC_NO   , _______ , _______ , KC_NO, KC_NO , _______ , _______ , KC_NO , KC_NO , KC_NO
             ),
 
