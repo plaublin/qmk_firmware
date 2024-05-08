@@ -231,7 +231,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |------+------+------+------+------+------+------+------+------+------+------+------|
      * | ESC~`|LCRL_T|LMTA_T|LALT_T|      |      |      |      |RALT_T|RMTA_T|RCTL_T|      |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * |      |      |      |MO SYM| Bksp |             |Space |NUMENT|      |      |      |
+     * |      |      |      |TESYM | Bksp |             |Space |NUMENT|      |      |      |
      * `-----------------------------------------------------------------------------------'
      */
     [_SYMBOLS_34] = LAYOUT_ortho_4x12(
@@ -249,7 +249,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |------+------+------+------+------+------+------+------+------+------+------+------|
      * |      |LCRL_T|LMTA_T|LALT_T|      |      |      |      |RALT_T|RMTA_T|RCTL_T|      |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * |      |      |      |MO SYM| Bksp |             |Space |NUMENT|      |      |      |
+     * |      |      |      |TESYM | Bksp |             |Space |NUMENT|      |      |      |
      * `-----------------------------------------------------------------------------------'
      */
     [_MOUSE_34] = LAYOUT_ortho_4x12(
@@ -267,7 +267,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |------+------+------+------+------+------+------+------+------+------+------+------|
      * | DEL  |LCRL_T|LMTA_T|LALT_T| RALT |      |      |   *  |  $ 4 |  % 5 |  ^ 6 |  + = |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * |      |      |      |MO SYM| Bksp |             |Space |NUMENT|      |      |      |
+     * |      |      |      |TESYM | Bksp |             |Space |NUMENT|      |      |      |
      * `-----------------------------------------------------------------------------------'
      */
     [_NUMBERS_34] = LAYOUT_ortho_4x12(
@@ -282,11 +282,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ,-----------------------------------------------------------------------------------.
      * |      |DVORAK| MAYA |QWERTY| VOL+ |      |      |  F1  |  F2  |  F3  |  F4  |TG MOS|
      * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * | LSFT | RESET|DVRK48|      | VOL- |      |      |  F5  |  F6  |  F7  |  F8  | RSFT |
+     * | LSFT |RESET |DVRK48|      | VOL- |      |      |  F5  |  F6  |  F7  |  F8  | RSFT |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
      * |      |LCRL_T|LMTA_T|LALT_T| MUTE |      |      |  F9  | F10  | F11  | F12  |      |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * |      |      |      |MO SYM| Bksp |             |Space |NUMENT|      |      |      |
+     * |      |      |      |TESYM | Bksp |             |Space |NUMENT|      |      |      |
      * `-----------------------------------------------------------------------------------'
      */
     [_FUNCTION_34] = LAYOUT_ortho_4x12(
@@ -300,7 +300,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* ------------------ KEY OVERRIDE ------------------- */
 
-//const key_override_t delete_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DEL);
 const key_override_t bkspc_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DEL);
 const key_override_t up_key_override = ko_make_with_layers_and_negmods(MOD_MASK_CTRL, KC_UP, KC_PGUP, ~0, MOD_MASK_GUI);
 const key_override_t dn_key_override = ko_make_with_layers_and_negmods(MOD_MASK_CTRL, KC_DOWN, KC_PGDN, ~0, MOD_MASK_GUI);
