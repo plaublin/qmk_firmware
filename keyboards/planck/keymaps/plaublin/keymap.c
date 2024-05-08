@@ -175,16 +175,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |------+------+------+------+------+------+------+------+------+------+------+------|
      * |LSFT A|   O  |   E  |   U  |   I  |      |      |   D  |   H  |   T  |   N  |RSFT S|
      * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * |   ;  |LCRL Q|LMTA J|LALT K|   X  |      |      |   B  |RALT M|RMTA W|RCTL V|   Z  |
+     * |MOS ; |LCRL Q|LMTA J|LALT K|   X  |      |      |   B  |RALT M|RMTA W|RCTL V|   Z  |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
      * |      |      |      |TESYM | Bksp |             |Space |NUMENT|      |      |      |
      * `-----------------------------------------------------------------------------------'
      */
     [_DVORAK_34] = LAYOUT_ortho_4x12(
-            KC_QUOT      , KC_COMM      , KC_DOT       , KC_P         , KC_Y    , KC_NO , KC_NO , KC_F   , KC_G         , KC_C         , KC_R         , KC_L         ,
-            LSFT_T(KC_A) , KC_O         , KC_E         , KC_U         , KC_I    , KC_NO , KC_NO , KC_D   , KC_H         , KC_T         , KC_N         , RSFT_T(KC_S) ,
-            KC_SCLN      , LCTL_T(KC_Q) , LGUI_T(KC_J) , LALT_T(KC_K) , KC_X    , KC_NO , KC_NO , KC_B   , RALT_T(KC_M) , RGUI_T(KC_W) , RCTL_T(KC_V) , KC_Z         ,
-            KC_NO        , KC_NO        , KC_NO        , TD(TESYM)    , KC_BSPC , KC_NO , KC_NO , KC_SPC , NUMENT       , KC_NO        , KC_NO        , KC_NO
+            KC_QUOT                , KC_COMM      , KC_DOT       , KC_P         , KC_Y    , KC_NO , KC_NO , KC_F   , KC_G         , KC_C         , KC_R         , KC_L         ,
+            LSFT_T(KC_A)           , KC_O         , KC_E         , KC_U         , KC_I    , KC_NO , KC_NO , KC_D   , KC_H         , KC_T         , KC_N         , RSFT_T(KC_S) ,
+            LT(_MOUSE_34, KC_SCLN) , LCTL_T(KC_Q) , LGUI_T(KC_J) , LALT_T(KC_K) , KC_X    , KC_NO , KC_NO , KC_B   , RALT_T(KC_M) , RGUI_T(KC_W) , RCTL_T(KC_V) , KC_Z         ,
+            KC_NO                  , KC_NO        , KC_NO        , TD(TESYM)    , KC_BSPC , KC_NO , KC_NO , KC_SPC , NUMENT       , KC_NO        , KC_NO        , KC_NO
             ),
 
     /* Maya
@@ -193,16 +193,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |------+------+------+------+------+------+------+------+------+------+------+------|
      * |LSFT N|   R  |   T  |   S  |   B  |      |      |   Y  |   H  |   A  |  E   |RSFT I|
      * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * |   X  |LCRL K|LMTA G|LALT W|   Q  |      |      |   J  |RALT P|RMTA '|RCTL ;|  ,   |
+     * |MOS X |LCRL K|LMTA G|LALT W|   Q  |      |      |   J  |RALT P|RMTA '|RCTL ;|  ,   |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
      * |      |      |      |TESYM | Bksp |             |Space |NUMENT|      |      |      |
      * `-----------------------------------------------------------------------------------'
      */
     [_MAYA_34] = LAYOUT_ortho_4x12(
-            KC_M         , KC_L         , KC_D         , KC_C         , KC_Z    , KC_NO , KC_NO , KC_V   , KC_F         , KC_O            , KC_U            , KC_DOT       ,
-            LSFT_T(KC_N) , KC_R         , KC_T         , KC_S         , KC_B    , KC_NO , KC_NO , KC_Y   , KC_H         , KC_A            , KC_E            , RSFT_T(KC_I) ,
-            KC_X         , LCTL_T(KC_K) , LGUI_T(KC_G) , LALT_T(KC_W) , KC_Q    , KC_NO , KC_NO , KC_J   , RALT_T(KC_P) , RGUI_T(KC_QUOT) , RCTL_T(KC_SCLN) , KC_COMM      ,
-            KC_NO        , KC_NO        , KC_NO        , TD(TESYM)    , KC_BSPC , KC_NO , KC_NO , KC_SPC , NUMENT       , KC_NO           , KC_NO           , KC_NO
+            KC_M                , KC_L         , KC_D         , KC_C         , KC_Z    , KC_NO , KC_NO , KC_V   , KC_F         , KC_O            , KC_U            , KC_DOT       ,
+            LSFT_T(KC_N)        , KC_R         , KC_T         , KC_S         , KC_B    , KC_NO , KC_NO , KC_Y   , KC_H         , KC_A            , KC_E            , RSFT_T(KC_I) ,
+            LT(_MOUSE_34, KC_X) , LCTL_T(KC_K) , LGUI_T(KC_G) , LALT_T(KC_W) , KC_Q    , KC_NO , KC_NO , KC_J   , RALT_T(KC_P) , RGUI_T(KC_QUOT) , RCTL_T(KC_SCLN) , KC_COMM      ,
+            KC_NO               , KC_NO        , KC_NO        , TD(TESYM)    , KC_BSPC , KC_NO , KC_NO , KC_SPC , NUMENT       , KC_NO           , KC_NO           , KC_NO
             ),
 
     /* Qwerty
@@ -211,16 +211,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |------+------+------+------+------+------+------+------+------+------+------+------|
      * |LSFT A|   S  |   D  |   F  |   G  |      |      |   H  |   J  |   K  |   L  |RSFT ;|
      * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * |   Z  |LCRL X|LMTA C|LALT V|   B  |      |      |   N  |RALT M|RMTA ,|RCTL .|  '   |
+     * |MOS z |LCRL X|LMTA C|LALT V|   B  |      |      |   N  |RALT M|RMTA ,|RCTL .|  '   |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
      * |      |      |      |TESYM | Bksp |             |Space |NUMENT|      |      |      |
      * `-----------------------------------------------------------------------------------'
      */
     [_QWERTY_34] = LAYOUT_ortho_4x12(
-            KC_Q         , KC_W         , KC_E         , KC_R         , KC_T    , KC_NO, KC_NO , KC_Y   , KC_U         , KC_I            , KC_O           , KC_P            ,
-            LSFT_T(KC_A) , KC_S         , KC_D         , KC_F         , KC_G    , KC_NO, KC_NO , KC_H   , KC_J         , KC_K            , KC_L           , RSFT_T(KC_SCLN) ,
-            KC_Z         , LCTL_T(KC_X) , LGUI_T(KC_C) , LALT_T(KC_V) , KC_B    , KC_NO, KC_NO , KC_N   , RALT_T(KC_M) , RGUI_T(KC_COMM) , RCTL_T(KC_DOT) , KC_QUOT         ,
-            KC_NO        , KC_NO        , KC_NO        , TD(TESYM)    , KC_BSPC , KC_NO, KC_NO , KC_SPC , NUMENT       , KC_NO           , KC_NO          , KC_NO
+            KC_Q                , KC_W         , KC_E         , KC_R         , KC_T    , KC_NO, KC_NO , KC_Y   , KC_U         , KC_I            , KC_O           , KC_P            ,
+            LSFT_T(KC_A)        , KC_S         , KC_D         , KC_F         , KC_G    , KC_NO, KC_NO , KC_H   , KC_J         , KC_K            , KC_L           , RSFT_T(KC_SCLN) ,
+            LT(_MOUSE_34, KC_Z) , LCTL_T(KC_X) , LGUI_T(KC_C) , LALT_T(KC_V) , KC_B    , KC_NO, KC_NO , KC_N   , RALT_T(KC_M) , RGUI_T(KC_COMM) , RCTL_T(KC_DOT) , KC_QUOT         ,
+            KC_NO               , KC_NO        , KC_NO        , TD(TESYM)    , KC_BSPC , KC_NO, KC_NO , KC_SPC , NUMENT       , KC_NO           , KC_NO          , KC_NO
             ),
 
     /* Symbols
@@ -255,7 +255,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_MOUSE_34] = LAYOUT_ortho_4x12(
             KC_NO   , KC_NO   , KC_WH_U , KC_NO   , KC_NO   , KC_NO , KC_NO , KC_NO   , KC_BTN1 , KC_MS_U , KC_BTN2 , TG(_MOUSE_34) ,
             _______ , KC_BTN1 , KC_WH_D , KC_BTN2 , KC_NO   , KC_NO , KC_NO , KC_NO   , KC_MS_L , KC_MS_D , KC_MS_R , _______       ,
-            KC_NO   , _______ , _______ , _______ , KC_NO   , KC_NO , KC_NO , KC_NO   , _______ , _______ , _______ , _______       ,
+            _______   , _______ , _______ , _______ , KC_NO   , KC_NO , KC_NO , KC_NO   , _______ , _______ , _______ , _______       ,
             KC_NO   , KC_NO   , KC_NO   , _______ , _______ , KC_NO , KC_NO , _______ , _______ , KC_NO   , KC_NO   , KC_NO
             ),
 
