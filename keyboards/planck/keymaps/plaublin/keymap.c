@@ -171,92 +171,92 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     /* Dvorak
      * ,-----------------------------------------------------------------------------------.
-     * |   '  |   ,  |   .  |   P  |   Y  |      |      |   F  |   G  |   C  |   R  |   L  |
+     * |      |   ,  |   .  |   P  |   Y  |      |      |   F  |   G  |   C  |   R  |      |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * |LSFT A|   O  |   E  |   U  |   I  |      |      |   D  |   H  |   T  |   N  |RSFT S|
+     * |   '  |   O  |   E  |   U  |   I  |      |      |   D  |   H  |   T  |   N  |   L  |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * |MOS ; |LCRL Q|LMTA J|LALT K|   X  |      |      |   B  |RALT M|RMTA W|RCTL V|   Z  |
+     * |LSFT A|LCRL Q|LMTA J|LALT K|   X  |      |      |   B  |RALT M|RMTA W|RCTL V|RSFT S|
      * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * |      |      |      |TESYM | Bksp |             |Space |NUMENT|      |      |      |
+     * |MOS ; |      |      |TESYM | Bksp |             |Space |NUMENT|      |      |   Z  |
      * `-----------------------------------------------------------------------------------'
      */
     [_DVORAK_34] = LAYOUT_ortho_4x12(
-            KC_QUOT                , KC_COMM      , KC_DOT       , KC_P         , KC_Y    , KC_NO , KC_NO , KC_F   , KC_G         , KC_C         , KC_R         , KC_L         ,
-            LSFT_T(KC_A)           , KC_O         , KC_E         , KC_U         , KC_I    , KC_NO , KC_NO , KC_D   , KC_H         , KC_T         , KC_N         , RSFT_T(KC_S) ,
-            LT(_MOUSE_34, KC_SCLN) , LCTL_T(KC_Q) , LGUI_T(KC_J) , LALT_T(KC_K) , KC_X    , KC_NO , KC_NO , KC_B   , RALT_T(KC_M) , RGUI_T(KC_W) , RCTL_T(KC_V) , KC_Z         ,
-            KC_NO                  , KC_NO        , KC_NO        , TD(TESYM)    , KC_BSPC , KC_NO , KC_NO , KC_SPC , NUMENT       , KC_NO        , KC_NO        , KC_NO
+            KC_NO                  , KC_COMM      , KC_DOT       , KC_P         , KC_Y    , KC_NO , KC_NO , KC_F   , KC_G         , KC_C         , KC_R         , KC_NO         ,
+            KC_QUOT                , KC_O         , KC_E         , KC_U         , KC_I    , KC_NO , KC_NO , KC_D   , KC_H         , KC_T         , KC_N         , KC_L         ,
+            LSFT_T(KC_A)           , LCTL_T(KC_Q) , LGUI_T(KC_J) , LALT_T(KC_K) , KC_X    , KC_NO , KC_NO , KC_B   , RALT_T(KC_M) , RGUI_T(KC_W) , RCTL_T(KC_V) , RSFT_T(KC_S) ,
+            LT(_MOUSE_34, KC_SCLN) , KC_NO        , KC_NO        , TD(TESYM)    , KC_BSPC , KC_NO , KC_NO , KC_SPC , NUMENT       , KC_NO        , KC_NO        , KC_Z
             ),
 
     /* Maya
      * ,-----------------------------------------------------------------------------------.
-     * |   M  |   L  |   D  |   C  |   Z  |      |      |   V  |   F  |   O  |   U  |  .   |
+     * |      |   L  |   D  |   C  |   Z  |      |      |   V  |   F  |   O  |   U  |     |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * |LSFT N|   R  |   T  |   S  |   B  |      |      |   Y  |   H  |   A  |  E   |RSFT I|
+     * |   M  |   R  |   T  |   S  |   B  |      |      |   Y  |   H  |   A  |  E   |  .   |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * |MOS X |LCRL K|LMTA G|LALT W|   Q  |      |      |   J  |RALT P|RMTA '|RCTL ;|  ,   |
+     * |LSFT N|LCRL K|LMTA G|LALT W|   Q  |      |      |   J  |RALT P|RMTA '|RCTL ;|RSFT I|
      * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * |      |      |      |TESYM | Bksp |             |Space |NUMENT|      |      |      |
+     * |MOS X |      |      |TESYM | Bksp |             |Space |NUMENT|      |      |  ,   |
      * `-----------------------------------------------------------------------------------'
      */
     [_MAYA_34] = LAYOUT_ortho_4x12(
-            KC_M                , KC_L         , KC_D         , KC_C         , KC_Z    , KC_NO , KC_NO , KC_V   , KC_F         , KC_O            , KC_U            , KC_DOT       ,
-            LSFT_T(KC_N)        , KC_R         , KC_T         , KC_S         , KC_B    , KC_NO , KC_NO , KC_Y   , KC_H         , KC_A            , KC_E            , RSFT_T(KC_I) ,
-            LT(_MOUSE_34, KC_X) , LCTL_T(KC_K) , LGUI_T(KC_G) , LALT_T(KC_W) , KC_Q    , KC_NO , KC_NO , KC_J   , RALT_T(KC_P) , RGUI_T(KC_QUOT) , RCTL_T(KC_SCLN) , KC_COMM      ,
-            KC_NO               , KC_NO        , KC_NO        , TD(TESYM)    , KC_BSPC , KC_NO , KC_NO , KC_SPC , NUMENT       , KC_NO           , KC_NO           , KC_NO
+            KC_NO               , KC_L         , KC_D         , KC_C         , KC_Z    , KC_NO , KC_NO , KC_V   , KC_F         , KC_O            , KC_U            , KC_NO        ,
+            KC_M                , KC_R         , KC_T         , KC_S         , KC_B    , KC_NO , KC_NO , KC_Y   , KC_H         , KC_A            , KC_E            , KC_DOT       ,
+            LSFT_T(KC_N)        , LCTL_T(KC_K) , LGUI_T(KC_G) , LALT_T(KC_W) , KC_Q    , KC_NO , KC_NO , KC_J   , RALT_T(KC_P) , RGUI_T(KC_QUOT) , RCTL_T(KC_SCLN) , RSFT_T(KC_I) ,
+            LT(_MOUSE_34, KC_X) , KC_NO        , KC_NO        , TD(TESYM)    , KC_BSPC , KC_NO , KC_NO , KC_SPC , NUMENT       , KC_NO           , KC_NO           , KC_COMM
             ),
 
     /* Qwerty
      * ,-----------------------------------------------------------------------------------.
-     * |   Q  |   W  |   E  |   R  |   T  |      |      |   Y  |   U  |   I  |   O  |   P  |
+     * |      |   W  |   E  |   R  |   T  |      |      |   Y  |   U  |   I  |   O  |      |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * |LSFT A|   S  |   D  |   F  |   G  |      |      |   H  |   J  |   K  |   L  |RSFT ;|
+     * |   Q  |   S  |   D  |   F  |   G  |      |      |   H  |   J  |   K  |   L  |   P  |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * |MOS z |LCRL X|LMTA C|LALT V|   B  |      |      |   N  |RALT M|RMTA ,|RCTL .|  '   |
+     * |LSFT A|LCRL X|LMTA C|LALT V|   B  |      |      |   N  |RALT M|RMTA ,|RCTL .|RSFT ;|
      * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * |      |      |      |TESYM | Bksp |             |Space |NUMENT|      |      |      |
+     * |MON Z |      |      |TESYM | Bksp |             |Space |NUMENT|      |      |  '   |
      * `-----------------------------------------------------------------------------------'
      */
     [_QWERTY_34] = LAYOUT_ortho_4x12(
-            KC_Q                , KC_W         , KC_E         , KC_R         , KC_T    , KC_NO, KC_NO , KC_Y   , KC_U         , KC_I            , KC_O           , KC_P            ,
-            LSFT_T(KC_A)        , KC_S         , KC_D         , KC_F         , KC_G    , KC_NO, KC_NO , KC_H   , KC_J         , KC_K            , KC_L           , RSFT_T(KC_SCLN) ,
-            LT(_MOUSE_34, KC_Z) , LCTL_T(KC_X) , LGUI_T(KC_C) , LALT_T(KC_V) , KC_B    , KC_NO, KC_NO , KC_N   , RALT_T(KC_M) , RGUI_T(KC_COMM) , RCTL_T(KC_DOT) , KC_QUOT         ,
-            KC_NO               , KC_NO        , KC_NO        , TD(TESYM)    , KC_BSPC , KC_NO, KC_NO , KC_SPC , NUMENT       , KC_NO           , KC_NO          , KC_NO
+            KC_NO                , KC_W         , KC_E         , KC_R         , KC_T    , KC_NO, KC_NO , KC_Y   , KC_U         , KC_I            , KC_O           , KC_NO           ,
+            KC_Q                 , KC_S         , KC_D         , KC_F         , KC_G    , KC_NO, KC_NO , KC_H   , KC_J         , KC_K            , KC_L           , KC_P            ,
+            LSFT_T(KC_A)         , LCTL_T(KC_X) , LGUI_T(KC_C) , LALT_T(KC_V) , KC_B    , KC_NO, KC_NO , KC_N   , RALT_T(KC_M) , RGUI_T(KC_COMM) , RCTL_T(KC_DOT) , RSFT_T(KC_SCLN) ,
+            LT(_MOUSE_34, KC_Z)  , KC_NO        , KC_NO        , TD(TESYM)    , KC_BSPC , KC_NO, KC_NO , KC_SPC , NUMENT       , KC_NO           , KC_NO          , KC_QUOT
             ),
 
     /* Symbols
      * ,-----------------------------------------------------------------------------------.
-     * | TAB  |   !  |   @  |   #  |   (  |      |      |  { [ |  | \ |  _ - |  + = |  °   |
+     * |      |   !  |   @  |   #  |   (  |      |      |  { [ |  | \ |  _ - |  + = |      |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * | LSFT |   ^  |   &  |   *  |   )  |      |      |  } ] |  ? / |   %  |   $  | RSFT |
+     * | TAB  |   ^  |   &  |   *  |   )  |      |      |  } ] |  ? / |   %  |   $  |  °   |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * | ESC~`|LCRL_T|LMTA_T|LALT_T|      |      |      |      |RALT_T|RMTA_T|RCTL_T|      |
+     * | LSFT |LCRL_T|LMTA_T|LALT_T|      |      |      |      |RALT_T|RMTA_T|RCTL_T| RSFT |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * |      |      |      |TESYM | Bksp |             |Space |NUMENT|      |      |      |
+     * | ESC~`|      |      |TESYM | Bksp |             |Space |NUMENT|      |      |      |
      * `-----------------------------------------------------------------------------------'
      */
     [_SYMBOLS_34] = LAYOUT_ortho_4x12(
-            KC_TAB  , KC_EXLM , KC_AT   , KC_HASH , KC_LPRN , KC_NO, KC_NO , KC_LBRC , KC_BSLS , KC_MINS  , KC_EQL  , RSA(KC_0) ,
-            KC_LSFT , KC_CIRC , KC_AMPR , KC_ASTR , KC_RPRN , KC_NO, KC_NO , KC_RBRC , KC_SLSH , KC_PERC  , KC_DLR  , KC_RSFT   ,
-            QK_GESC , _______ , _______ , _______ , KC_NO   , KC_NO, KC_NO , KC_NO   , _______ , _______  , _______ , KC_NO     ,
-            KC_NO   , KC_NO   , KC_NO   , _______ , _______ , KC_NO, KC_NO , _______ , _______ , KC_NO    , KC_NO   , KC_NO
+            KC_NO   , KC_EXLM , KC_AT   , KC_HASH , KC_LPRN , KC_NO, KC_NO , KC_LBRC , KC_BSLS , KC_MINS  , KC_EQL  , KC_NO     ,
+            KC_TAB  , KC_CIRC , KC_AMPR , KC_ASTR , KC_RPRN , KC_NO, KC_NO , KC_RBRC , KC_SLSH , KC_PERC  , KC_DLR  , RSA(KC_0) ,
+            KC_LSFT , _______ , _______ , _______ , KC_NO   , KC_NO, KC_NO , KC_NO   , _______ , _______  , _______ , KC_RSFT   ,
+            QK_GESC , KC_NO   , KC_NO   , _______ , _______ , KC_NO, KC_NO , _______ , _______ , KC_NO    , KC_NO   , KC_NO
             ),
 
     /* Mouse
      * ,-----------------------------------------------------------------------------------.
-     * |      |      |WHELUP|      |      |      |      |      |LFTCLK|MOSEUP|RGTCLK|TG MOS|
+     * |      |      |WHELUP|      |      |      |      |      |LFTCLK|MOSEUP|RGTCLK|      |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * | LSFT |LFTCLK|WHELDN|RGTCLK|      |      |      |      |MOSLFT|MOSEDN|MOSRGT| RSFT |
+     * |      |LFTCLK|WHELDN|RGTCLK|      |      |      |      |MOSLFT|MOSEDN|MOSRGT|TG MOS|
      * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * |      |LCRL_T|LMTA_T|LALT_T|      |      |      |      |RALT_T|RMTA_T|RCTL_T|      |
+     * | LSFT |LCRL_T|LMTA_T|LALT_T|      |      |      |      |RALT_T|RMTA_T|RCTL_T| RSFT |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * |      |      |      |TESYM | Bksp |             |Space |NUMENT|      |      |      |
+     * | ESC~`|      |      |TESYM | Bksp |             |Space |NUMENT|      |      |      |
      * `-----------------------------------------------------------------------------------'
      */
     [_MOUSE_34] = LAYOUT_ortho_4x12(
-            KC_NO   , KC_NO   , KC_WH_U , KC_NO   , KC_NO   , KC_NO , KC_NO , KC_NO   , KC_BTN1 , KC_MS_U , KC_BTN2 , TG(_MOUSE_34) ,
-            _______ , KC_BTN1 , KC_WH_D , KC_BTN2 , KC_NO   , KC_NO , KC_NO , KC_NO   , KC_MS_L , KC_MS_D , KC_MS_R , _______       ,
-            _______   , _______ , _______ , _______ , KC_NO   , KC_NO , KC_NO , KC_NO   , _______ , _______ , _______ , _______       ,
-            KC_NO   , KC_NO   , KC_NO   , _______ , _______ , KC_NO , KC_NO , _______ , _______ , KC_NO   , KC_NO   , KC_NO
+            KC_NO   , KC_NO   , KC_WH_U , KC_NO   , KC_NO   , KC_NO , KC_NO , KC_NO   , KC_BTN1 , KC_MS_U , KC_BTN2 , KC_NO         ,
+            KC_NO   , KC_BTN1 , KC_WH_D , KC_BTN2 , KC_NO   , KC_NO , KC_NO , KC_NO   , KC_MS_L , KC_MS_D , KC_MS_R , TG(_MOUSE_34) ,
+            _______ , _______ , _______ , _______ , KC_NO   , KC_NO , KC_NO , KC_NO   , _______ , _______ , _______ , _______       ,
+            _______ , KC_NO   , KC_NO   , _______ , _______ , KC_NO , KC_NO , _______ , _______ , KC_NO   , KC_NO   , KC_NO
             ),
 
     /* Navigation/Numbers
@@ -271,28 +271,28 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * `-----------------------------------------------------------------------------------'
      */
     [_NUMBERS_34] = LAYOUT_ortho_4x12(
-            KC_INS  , KC_HOME , KC_UP   , KC_END  , KC_PGUP , KC_NO, KC_NO , KC_SLSH , KC_7    , KC_8  , KC_9  , KC_PPLS ,
-            _______ , KC_LEFT , KC_DOWN , KC_RGHT , KC_PGDN , KC_NO, KC_NO , KC_0    , KC_1    , KC_2  , KC_3  , KC_MINS ,
-            KC_DEL  , _______ , _______ , _______ , KC_RALT , KC_NO, KC_NO , KC_ASTR , KC_4    , KC_5  , KC_6  , KC_EQL  ,
-            KC_NO   , KC_NO   , KC_NO   , _______ , _______ , KC_NO, KC_NO , _______ , _______ , KC_NO , KC_NO , KC_NO
+            KC_NO   , KC_HOME , KC_UP   , KC_END  , KC_PGUP , KC_NO, KC_NO , KC_SLSH , KC_7    , KC_8  , KC_9  , KC_PPLS ,
+            KC_INS  , KC_LEFT , KC_DOWN , KC_RGHT , KC_PGDN , KC_NO, KC_NO , KC_0    , KC_1    , KC_2  , KC_3  , KC_PPLS ,
+            KC_LSFT , _______ , _______ , _______ , KC_RALT , KC_NO, KC_NO , KC_ASTR , KC_4    , KC_5  , KC_6  , KC_MINS ,
+            KC_DEL  , KC_NO   , KC_NO   , _______ , _______ , KC_NO, KC_NO , _______ , _______ , KC_NO , KC_NO , KC_EQL
             ),
 
 
     /* Functions
      * ,-----------------------------------------------------------------------------------.
-     * |      |DVORAK| MAYA |QWERTY| VOL+ |      |      |  F1  |  F2  |  F3  |  F4  |TG MOS|
+     * |      |DVORAK| MAYA |QWERTY| VOL+ |      |      |  F1  |  F2  |  F3  |  F4  |      |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * | LSFT |RESET |DVRK48|      | VOL- |      |      |  F5  |  F6  |  F7  |  F8  | RSFT |
+     * |      |RESET |DVRK48|      | VOL- |      |      |  F5  |  F6  |  F7  |  F8  |TG MOS|
      * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * |      |LCRL_T|LMTA_T|LALT_T| MUTE |      |      |  F9  | F10  | F11  | F12  |      |
+     * | LSFT |LCRL_T|LMTA_T|LALT_T| MUTE |      |      |  F9  | F10  | F11  | F12  | RSFT |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
      * |      |      |      |TESYM | Bksp |             |Space |NUMENT|      |      |      |
      * `-----------------------------------------------------------------------------------'
      */
     [_FUNCTION_34] = LAYOUT_ortho_4x12(
-            KC_NO   , DF(_DVORAK_34) , DF(_MAYA_34)   , DF(_QWERTY_34) , KC_VOLU , KC_NO , KC_NO , KC_F1   , KC_F2   , KC_F3  , KC_F4  , TG(_MOUSE_34) ,
-            _______ , QK_BOOT        , DF(_DVORAK_48) , KC_NO          , KC_VOLD , KC_NO , KC_NO , KC_F5   , KC_F6   , KC_F7  , KC_F8  , KC_RSFT       ,
-            KC_NO   , _______        , _______        , _______        , KC_MUTE , KC_NO , KC_NO , KC_F9   , KC_F10  , KC_F11 , KC_F12 , KC_NO         ,
+            KC_NO   , DF(_DVORAK_34) , DF(_MAYA_34)   , DF(_QWERTY_34) , KC_VOLU , KC_NO , KC_NO , KC_F1   , KC_F2   , KC_F3  , KC_F4  , KC_NO         ,
+            KC_NO   , QK_BOOT        , DF(_DVORAK_48) , KC_NO          , KC_VOLD , KC_NO , KC_NO , KC_F5   , KC_F6   , KC_F7  , KC_F8  , TG(_MOUSE_34) ,
+            _______ , _______        , _______        , _______        , KC_MUTE , KC_NO , KC_NO , KC_F9   , KC_F10  , KC_F11 , KC_F12 , KC_RSFT       ,
             KC_NO   , KC_NO          , KC_NO          , _______        , _______ , KC_NO , KC_NO , _______ , _______ , KC_NO  , KC_NO  , KC_NO
             ),
 };
