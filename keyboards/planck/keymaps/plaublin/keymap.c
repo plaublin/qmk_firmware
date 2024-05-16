@@ -80,7 +80,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     /* Maya
      * ,-----------------------------------------------------------------------------------.
-     * | Tab  |   B  |   L  |   D  |   G  |   Q  |   K  |   F  |   O  |  U   |  /   |TT Num|
+     * | Tab  |   B  |   L  |   D  |   G  |   Q  |   K  |   F  |   O  |  U   |  ? / |TT Num|
      * |------+------+------+------+------+------+------+------+------+------+------+------|
      * | Shift|   N  |   R  |   T  |   S  |   V  |   Y  |   H  |   A  |  E   |  I   |MO Spe|
      * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -186,14 +186,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             KC_QUOT                , KC_O         , KC_E         , KC_U         , KC_I    , KC_NO , KC_NO , KC_D   , KC_H         , KC_T         , KC_N         , KC_L         ,
             LSFT_T(KC_A)           , LCTL_T(KC_Q) , LGUI_T(KC_J) , LALT_T(KC_K) , KC_X    , KC_NO , KC_NO , KC_B   , RALT_T(KC_M) , RGUI_T(KC_W) , RCTL_T(KC_V) , RSFT_T(KC_S) ,
             LT(_MOUSE_34, KC_SCLN) , KC_NO        , KC_NO        , TD(TESYM)    , KC_BSPC , KC_NO , KC_NO , KC_SPC , NUMENT       , KC_NO        , KC_NO        , KC_Z
-            ),
-
-
-    [_MAYA_48] = LAYOUT_ortho_4x12(
-            KC_TAB  , KC_B    , KC_L    , KC_D    , KC_G    , KC_Q   , KC_K   , KC_F   , KC_O    , KC_U    , KC_SLSH , TT(_NUMBERS_48)  ,
-            KC_LSFT , KC_N    , KC_R    , KC_T    , KC_S    , KC_V   , KC_Y   , KC_H   , KC_A    , KC_E    , KC_I    , MO(_FUNCTION_48) ,
-            QK_GESC , KC_Z    , KC_X    , KC_M    , KC_C    , KC_W   , KC_J   , KC_P   , KC_QUOT , KC_COMM , KC_DOT  , KC_UP            ,
-            KC_LCTL , KC_LGUI , KC_LALT , KC_RALT , KC_BSPC , KC_SPC , KC_SPC , KC_ENT , KC_SCLN , KC_LEFT , KC_RGHT , KC_DOWN
             ),
 
     /* Maya
