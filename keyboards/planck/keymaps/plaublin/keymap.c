@@ -1,3 +1,4 @@
+#include <locale.h>
 #include QMK_KEYBOARD_H
 
 /* ------------------- TAP DANCE ------------------- */
@@ -40,6 +41,12 @@ void ql_reset(tap_dance_state_t *state, void *user_data);
 #define NUMENT LT(_NUMBERS_34, KC_ENT)
 
 enum planck_layers {
+    _DVORAK_48,
+    _MAYA_48,
+    _QWERTY_48,
+    _NUMBERS_48,
+    _MOUSE_48,
+    _FUNCTION_48,
     _DVORAK_34,
     _MAYA_34,
     _QWERTY_34,
@@ -50,7 +57,118 @@ enum planck_layers {
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    /********************** 34 KEYS LAYOUT COLUMN STAGGER **********************/
+
+    /***************************** 48 KEYS LAYOUT *****************************/
+
+    /* Dvorak
+     * ,-----------------------------------------------------------------------------------.
+     * | Tab  |   '  |   ,  |   .  |   P  |   Y  |   F  |   G  |   C  |   R  |   L  |TT Num|
+     * |------+------+------+------+------+------+------+------+------+------+------+------|
+     * | Shift|   A  |   O  |   E  |   U  |   I  |   D  |   H  |   T  |   N  |   S  |MO Spe|
+     * |------+------+------+------+------+------+------+------+------+------+------+------|
+     * | Esc~`|   ;  |   Q  |   J  |   K  |   X  |   B  |   M  |   W  |   V  |   Z  |  Up  |
+     * |------+------+------+------+------+------+------+------+------+------+------+------|
+     * | Ctrl | Meta | LAlt  | RAlt| Bksp |    Space    |Enter |  ? / | Left | Right| Down |
+     * `-----------------------------------------------------------------------------------'
+     */
+    [_DVORAK_48] = LAYOUT_ortho_4x12(
+            KC_TAB  , KC_QUOT , KC_COMM , KC_DOT  , KC_P    , KC_Y   , KC_F   , KC_G   , KC_C    , KC_R    , KC_L    , TT(_NUMBERS_48) ,
+            KC_LSFT , KC_A    , KC_O    , KC_E    , KC_U    , KC_I   , KC_D   , KC_H   , KC_T    , KC_N    , KC_S    , MO(_FUNCTION_48) ,
+            QK_GESC , KC_SCLN , KC_Q    , KC_J    , KC_K    , KC_X   , KC_B   , KC_M   , KC_W    , KC_V    , KC_Z    , KC_UP           ,
+            KC_LCTL , KC_LGUI , KC_LALT , KC_RALT , KC_BSPC , KC_SPC , KC_SPC , KC_ENT , KC_SLSH , KC_LEFT , KC_RGHT , KC_DOWN
+            ),
+
+    /* Maya
+     * ,-----------------------------------------------------------------------------------.
+     * | Tab  |   B  |   L  |   D  |   G  |   Q  |   K  |   F  |   O  |  U   |  /   |TT Num|
+     * |------+------+------+------+------+------+------+------+------+------+------+------|
+     * | Shift|   N  |   R  |   T  |   S  |   V  |   Y  |   H  |   A  |  E   |  I   |MO Spe|
+     * |------+------+------+------+------+------+------+------+------+------+------+------|
+     * | Esc~`|   Z  |   X  |   M  |   C  |   W  |   J  |   P  |   '  |  ,   |  .   |  Up  |
+     * |------+------+------+------+------+------+------+------+------+------+------+------|
+     * | Ctrl | Meta | LAlt  | RAlt| Bksp |    Space    |Enter |  : ; | Left | Right| Down |
+     * `-----------------------------------------------------------------------------------'
+     */
+    [_MAYA_48] = LAYOUT_ortho_4x12(
+            KC_TAB  , KC_B    , KC_L    , KC_D    , KC_G    , KC_Q   , KC_K   , KC_F   , KC_O    , KC_U    , KC_SLSH , TT(_NUMBERS_48) ,
+            KC_LSFT , KC_N    , KC_R    , KC_T    , KC_S    , KC_V   , KC_Y   , KC_H   , KC_A    , KC_E    , KC_I    , MO(_FUNCTION_48) ,
+            QK_GESC , KC_Z    , KC_X    , KC_M    , KC_C    , KC_W   , KC_J   , KC_P   , KC_QUOT , KC_COMM , KC_DOT  , KC_UP           ,
+            KC_LCTL , KC_LGUI , KC_LALT , KC_RALT , KC_BSPC , KC_SPC , KC_SPC , KC_ENT , KC_SCLN , KC_LEFT , KC_RGHT , KC_DOWN
+            ),
+
+    /* Qwerty
+     * ,-----------------------------------------------------------------------------------.
+     * | Tab  |   Q  |   W  |   E  |   R  |   T  |   Y  |   U  |   I  |   O  |   P  |TT Num|
+     * |------+------+------+------+------+------+------+------+------+------+------+------|
+     * | Shift|   A  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   ;  |MO Spe|
+     * |------+------+------+------+------+------+------+------+------+------+------+------|
+     * | Esc~`|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   '  |  Up  |
+     * |------+------+------+------+------+------+------+------+------+------+------+------|
+     * | Ctrl | Meta | LAlt  | RAlt| Bksp |    Space    |Enter |  ? / | Left | Right| Down |
+     * `-----------------------------------------------------------------------------------'
+     */
+    [_QWERTY_48] = LAYOUT_ortho_4x12(
+            KC_TAB  , KC_Q    , KC_W    , KC_E    , KC_R    , KC_T   , KC_Y   , KC_U   , KC_I    , KC_O    , KC_P    , TT(_NUMBERS_48) ,
+            KC_LSFT , KC_A    , KC_S    , KC_D    , KC_F    , KC_G   , KC_H   , KC_J   , KC_K    , KC_L    , KC_SCLN , MO(_FUNCTION_48) ,
+            QK_GESC , KC_Z    , KC_X    , KC_C    , KC_V    , KC_B   , KC_N   , KC_M   , KC_COMM , KC_DOT  , KC_QUOT , KC_UP           ,
+            KC_LCTL , KC_LGUI , KC_LALT , KC_RALT , KC_BSPC , KC_SPC , KC_SPC , KC_ENT , KC_SLSH , KC_LEFT , KC_RGHT , KC_DOWN
+            ),
+
+    /* Numbers
+     * ,-----------------------------------------------------------------------------------.
+     * | Tab  |  ` ~ |  , < | . >  |      |      |      |      |  | \ |  - _ |  = + |TG Num|
+     * |------+------+------+------+------+------+------+------+------+------+------+------|
+     * | Shift|  1 ! |  2 @ |  3 # |  4 $ |  5 % |  6 ^ |  7 & |  8 * |  9 ( |  0 ) |      |
+     * |------+------+------+------+------+------+------+------+------+------+------+------|
+     * | Esc~`|      |      |   {  |   [  |   (  |   )  |   ]  |   }  |      |      |  Up  |
+     * |------+------+------+------+------+------+------+------+------+------+------+------|
+     * | Ctrl | Meta | LAlt  | RAlt| Bksp |    Space    |Enter |  ? / | Left | Right| Down |
+     * `-----------------------------------------------------------------------------------'
+     */
+    [_NUMBERS_48] = LAYOUT_ortho_4x12(
+            _______ , KC_GRV  , KC_COMM , KC_DOT  , KC_NO   , KC_NO   , KC_NO   , KC_NO   , KC_BSLS , KC_MINS , KC_EQL  , TG(_NUMBERS_48) ,
+            _______ , KC_1    , KC_2    , KC_3    , KC_4    , KC_5    , KC_6    , KC_7    , KC_8    , KC_9    , KC_0    , _______         ,
+            _______ , KC_NO   , KC_NO   , KC_LCBR , KC_LBRC , KC_LPRN , KC_RPRN , KC_RBRC , KC_RCBR , KC_NO   , KC_NO   , _______         ,
+            _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______
+            ),
+
+    /* Mouse
+     * ,-----------------------------------------------------------------------------------.
+     * | Tab  |      |WHELUP|      |      |      |      |      |LFTCLK|MOSEUP|RGTCLK|MOUSE |
+     * |------+------+------+------+------+------+------+------+------+------+------+------|
+     * | Shift|LFTCLK|WHELDN|RGTCLK|      |      |      |      |MOSLFT|MOSEDN|MOSRGT|      |
+     * |------+------+------+------+------+------+------+------+------+------+------+------|
+     * | Esc~`|      |      |      |      |      |      |      |      |      |      |  Up  |
+     * |------+------+------+------+------+------+------+------+------+------+------+------|
+     * | Ctrl | Meta | LAlt  | RAlt| Bksp |    Space    |Enter |      | Left |Right | Down |
+     * `-----------------------------------------------------------------------------------'
+     */
+    [_MOUSE_48] = LAYOUT_ortho_4x12(
+            _______ , KC_NO   , KC_WH_U , KC_NO   , KC_NO   , KC_NO   , KC_NO   , KC_NO   , KC_BTN1 , KC_MS_U , KC_BTN2 , TG(_MOUSE_48) ,
+            _______ , KC_BTN1 , KC_WH_D , KC_BTN2 , KC_NO   , KC_NO   , KC_NO   , KC_NO   , KC_MS_L , KC_MS_D , KC_MS_R , _______       ,
+            _______ , KC_NO   , KC_NO   , KC_NO   , KC_NO   , KC_NO   , KC_NO   , KC_NO   , KC_NO   , KC_NO   , KC_NO   , KC_UP         ,
+            _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , KC_LEFT , KC_RGHT , KC_DOWN
+            ),
+
+    /* Functions
+     * ,-----------------------------------------------------------------------------------.
+     * | Tab  |  F1  |  F2  |  F3  |  F4  |      | RESET|      | VOL+ |DVORAK|QWERTY|MOUSE |
+     * |------+------+------+------+------+------+------+------+------+------+------+------|
+     * | Shift|  F5  |  F6  |  F7  |  F8  |      |MAYA34|      | VOL- | MAYA |      |      |
+     * |------+------+------+------+------+------+------+------+------+------+------+------|
+     * | Esc~`|  F9  |  F10 | F11  | F12  |      |      |      | MUTE |  INS | DEL  | PGUP |
+     * |------+------+------+------+------+------+------+------+------+------+------+------|
+     * | Ctrl | Meta | LAlt  | RAlt| Bksp |    Space    |Enter |PRTSCR| HOME |  END | PGDN |
+     * `-----------------------------------------------------------------------------------'
+     */
+    [_FUNCTION_48] = LAYOUT_ortho_4x12(
+            _______ , KC_F1   , KC_F2   , KC_F3   , KC_F4   , KC_NO   , QK_BOOT      , KC_NO   , KC_VOLU , DF(_DVORAK_48) , DF(_QWERTY_48) , TG(_MOUSE_48) ,
+            _______ , KC_F5   , KC_F6   , KC_F7   , KC_F8   , KC_NO   , DF(_MAYA_34) , KC_NO   , KC_VOLD , DF(_MAYA_48)   , KC_NO          , _______       ,
+            _______ , KC_F9   , KC_F10  , KC_F11  , KC_F12  , KC_NO   , KC_NO        , KC_NO   , KC_MUTE , KC_INS         , KC_DEL         , KC_PGUP       ,
+            _______ , _______ , _______ , _______ , _______ , _______ , _______      , _______ , KC_PSCR , KC_HOME        , KC_END         , KC_PGDN
+            ),
+
+    /***************************** 34 KEYS LAYOUT *****************************/
 
     /* Dvorak
      * ,-----------------------------------------------------------------------------------.
@@ -70,22 +188,30 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             LT(_MOUSE_34, KC_SCLN) , KC_NO        , KC_NO        , TD(TESYM)    , KC_BSPC , KC_NO , KC_NO , KC_SPC , NUMENT       , KC_NO        , KC_NO        , KC_Z
             ),
 
+
+    [_MAYA_48] = LAYOUT_ortho_4x12(
+            KC_TAB  , KC_B    , KC_L    , KC_D    , KC_G    , KC_Q   , KC_K   , KC_F   , KC_O    , KC_U    , KC_SLSH , TT(_NUMBERS_48) ,
+            KC_LSFT , KC_N    , KC_R    , KC_T    , KC_S    , KC_V   , KC_Y   , KC_H   , KC_A    , KC_E    , KC_I    , MO(_FUNCTION_48) ,
+            QK_GESC , KC_Z    , KC_X    , KC_M    , KC_C    , KC_W   , KC_J   , KC_P   , KC_QUOT , KC_COMM , KC_DOT  , KC_UP           ,
+            KC_LCTL , KC_LGUI , KC_LALT , KC_RALT , KC_BSPC , KC_SPC , KC_SPC , KC_ENT , KC_SCLN , KC_LEFT , KC_RGHT , KC_DOWN
+            ),
+
     /* Maya
      * ,-----------------------------------------------------------------------------------.
-     * |      |   L  |   D  |   C  |   Z  |      |      |   V  |   F  |   O  |   U  |     |
+     * |      |   L  |   D  |   G  |   Q  |      |      |   K  |   F  |   O  |   U  |      |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * |   M  |   R  |   T  |   S  |   B  |      |      |   Y  |   H  |   A  |  E   |  .   |
+     * |   B  |   R  |   T  |   S  |   V  |      |      |   Y  |   H  |   A  |  E   | ? /  |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * |LSFT N|LCRL K|LMTA G|LALT W|   Q  |      |      |   J  |RALT P|RMTA '|RCTL ;|RSFT I|
+     * |LSFT N|LCRL X|LMTA M|LALT C|   W  |      |      |   J  |RALT P|RMTA '|RCTL ,|RSFT I|
      * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * |MOS X |      |      |TESYM | Bksp |             |Space |NUMENT|      |      |  ,   |
+     * |MOS Z |      |      |TESYM | Bksp |             |Space |NUMENT|      |      |  .   |
      * `-----------------------------------------------------------------------------------'
      */
     [_MAYA_34] = LAYOUT_ortho_4x12(
-            KC_NO               , KC_L         , KC_D         , KC_C         , KC_Z    , KC_NO , KC_NO , KC_V   , KC_F         , KC_O            , KC_U            , KC_NO        ,
-            KC_M                , KC_R         , KC_T         , KC_S         , KC_B    , KC_NO , KC_NO , KC_Y   , KC_H         , KC_A            , KC_E            , KC_DOT       ,
-            LSFT_T(KC_N)        , LCTL_T(KC_K) , LGUI_T(KC_G) , LALT_T(KC_W) , KC_Q    , KC_NO , KC_NO , KC_J   , RALT_T(KC_P) , RGUI_T(KC_QUOT) , RCTL_T(KC_SCLN) , RSFT_T(KC_I) ,
-            LT(_MOUSE_34, KC_X) , KC_NO        , KC_NO        , TD(TESYM)    , KC_BSPC , KC_NO , KC_NO , KC_SPC , NUMENT       , KC_NO           , KC_NO           , KC_COMM
+            KC_NO               , KC_L         , KC_D         , KC_G         , KC_Q    , KC_NO , KC_NO , KC_K   , KC_F         , KC_O            , KC_U            , KC_NO        ,
+            KC_B                , KC_R         , KC_T         , KC_S         , KC_V    , KC_NO , KC_NO , KC_Y   , KC_H         , KC_A            , KC_E            , KC_SLSH       ,
+            LSFT_T(KC_N)        , LCTL_T(KC_X) , LGUI_T(KC_M) , LALT_T(KC_C) , KC_W    , KC_NO , KC_NO , KC_J   , RALT_T(KC_P) , RGUI_T(KC_QUOT) , RCTL_T(KC_COMM) , RSFT_T(KC_I) ,
+            LT(_MOUSE_34, KC_Z) , KC_NO        , KC_NO        , TD(TESYM)    , KC_BSPC , KC_NO , KC_NO , KC_SPC , NUMENT       , KC_NO           , KC_NO           , KC_DOT
             ),
 
     /* Qwerty
@@ -165,7 +291,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ,-----------------------------------------------------------------------------------.
      * |      |DVORAK| MAYA |QWERTY| VOL+ |      |      |  F1  |  F2  |  F3  |  F4  |      |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * | RESET|      |      |      | VOL- |      |      |  F5  |  F6  |  F7  |  F8  |TG MOS|
+     * |      |RESET |DVRK48|      | VOL- |      |      |  F5  |  F6  |  F7  |  F8  |TG MOS|
      * |------+------+------+------+------+------+------+------+------+------+------+------|
      * | LSFT |LCRL_T|LMTA_T|LALT_T| MUTE |      |      |  F9  | F10  | F11  | F12  | RSFT |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -174,7 +300,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
     [_FUNCTION_34] = LAYOUT_ortho_4x12(
             KC_NO   , DF(_DVORAK_34) , DF(_MAYA_34)   , DF(_QWERTY_34) , KC_VOLU , KC_NO , KC_NO , KC_F1   , KC_F2   , KC_F3  , KC_F4  , KC_NO         ,
-            QK_BOOT , KC_NO          , KC_NO          , KC_NO          , KC_VOLD , KC_NO , KC_NO , KC_F5   , KC_F6   , KC_F7  , KC_F8  , TG(_MOUSE_34) ,
+            KC_NO   , QK_BOOT        , DF(_DVORAK_48) , KC_NO          , KC_VOLD , KC_NO , KC_NO , KC_F5   , KC_F6   , KC_F7  , KC_F8  , TG(_MOUSE_34) ,
             _______ , _______        , _______        , _______        , KC_MUTE , KC_NO , KC_NO , KC_F9   , KC_F10  , KC_F11 , KC_F12 , KC_RSFT       ,
             KC_NO   , KC_NO          , KC_NO          , _______        , _______ , KC_NO , KC_NO , _______ , _______ , KC_NO  , KC_NO  , KC_NO
             ),
@@ -184,10 +310,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* ------------------ KEY OVERRIDE ------------------- */
 
 const key_override_t bkspc_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DEL);
+const key_override_t up_key_override = ko_make_with_layers_and_negmods(MOD_MASK_CTRL, KC_UP, KC_PGUP, ~0, MOD_MASK_GUI);
+const key_override_t dn_key_override = ko_make_with_layers_and_negmods(MOD_MASK_CTRL, KC_DOWN, KC_PGDN, ~0, MOD_MASK_GUI);
+const key_override_t left_key_override = ko_make_with_layers_and_negmods(MOD_MASK_CTRL, KC_LEFT, KC_HOME, ~0, MOD_MASK_GUI);
+const key_override_t right_key_override = ko_make_with_layers_and_negmods(MOD_MASK_CTRL, KC_RGHT, KC_END, ~0, MOD_MASK_GUI);
 
 // This globally defines all key overrides to be used
 const key_override_t **key_overrides = (const key_override_t *[]){
     &bkspc_key_override,
+    &up_key_override,
+    &dn_key_override,
+    &left_key_override,
+    &right_key_override,
     NULL // Null terminate the array of overrides!
 };
 
@@ -254,9 +388,9 @@ void keyboard_post_init_user(void) {
 }
 
 layer_state_t default_layer_state_set_user(layer_state_t state) {
-    rgblight_set_layer_state(0, layer_state_cmp(state, _DVORAK_34));
-    rgblight_set_layer_state(1, layer_state_cmp(state, _MAYA_34));
-    rgblight_set_layer_state(2, layer_state_cmp(state, _QWERTY_34));
+    rgblight_set_layer_state(0, layer_state_cmp(state, _DVORAK_48) || layer_state_cmp(state, _DVORAK_34));
+    rgblight_set_layer_state(1, layer_state_cmp(state, _MAYA_48) || layer_state_cmp(state, _MAYA_34));
+    rgblight_set_layer_state(2, layer_state_cmp(state, _QWERTY_48) || layer_state_cmp(state, _QWERTY_34));
 
     return state;
 }
@@ -265,13 +399,23 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     state = update_tri_layer_state(state, _SYMBOLS_34, _NUMBERS_34, _FUNCTION_34);
 
     rgblight_set_layer_state(3, layer_state_cmp(state, _SYMBOLS_34));
-    rgblight_set_layer_state(4, layer_state_cmp(state, _NUMBERS_34));
-    rgblight_set_layer_state(5, layer_state_cmp(state, _MOUSE_34));
-    rgblight_set_layer_state(6,  layer_state_cmp(state, _FUNCTION_34));
+    rgblight_set_layer_state(4, layer_state_cmp(state, _NUMBERS_48) || layer_state_cmp(state, _NUMBERS_34));
+    rgblight_set_layer_state(5, layer_state_cmp(state, _MOUSE_48) || layer_state_cmp(state, _MOUSE_34));
+    rgblight_set_layer_state(6, layer_state_cmp(state, _FUNCTION_48) || layer_state_cmp(state, _FUNCTION_34));
 
     return state;
 }
 
+
+/* -------------------- COMBOS --------------------- */
+
+const uint16_t PROGMEM semi_combo[] = {KC_COMM, KC_DOT, COMBO_END};
+const uint16_t PROGMEM semi_combo2[] = {RCTL_T(KC_COMM), KC_DOT, COMBO_END};
+
+combo_t key_combos[] = {
+    COMBO(semi_combo, KC_SCLN),
+    COMBO(semi_combo2, KC_SCLN),
+};
 
 /* ------------------- TAP DANCE ------------------- */
 

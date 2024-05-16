@@ -52,6 +52,9 @@
 // The default is 5, it's too much!
 #define TAPPING_TOGGLE 2
 
+// Combos are always checked with the keys from the current layer
+#undef COMBO_ONLY_FROM_LAYER
+
 #define RGBLIGHT_LAYERS
 #define RGBLIGHT_LED_COUNT 9
 

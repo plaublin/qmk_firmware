@@ -3,3 +3,4 @@ ifeq ($(strip $(AUDIO_ENABLE)), yes)
 endif
 
 TAP_DANCE_ENABLE = yes
+COMBO_ENABLE = yes
