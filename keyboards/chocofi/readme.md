@@ -8,16 +8,9 @@
 * Hardware Supported: Beekeeb's chocofi (sea picro)
 * Hardware Availability: [Beekeeb](https://shop.beekeeb.com/product/chocofi-36-keys-kailh-low-profile-choc-v1-mechanical-ergonomic-hotswap-split-keyboard-diy-kit/)
 
+To compile the keyboard:
 
-Make example for this keyboard (after setting up your build environment):
-
-    make chocofi:default
-
-Flashing example for this keyboard:
-
-    make chocofi:default:flash
-
-See the [build environment setup](https://docs.qmk.fm/#/getting_started_build_tools) and the [make instructions](https://docs.qmk.fm/#/getting_started_make_guide) for more information. Brand new to QMK? Start with our [Complete Newbs Guide](https://docs.qmk.fm/#/newbs).
+    qmk compile -kb chocofi -km plaublin
 
 ## Bootloader
 

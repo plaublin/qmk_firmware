@@ -1,2 +1,3 @@
-MOUSEKEY_ENABLE = yes
-LTO_ENABLE      = yes
+MOUSEKEY_ENABLE  = yes
+LTO_ENABLE       = yes
+TRI_LAYER_ENABLE = yes
