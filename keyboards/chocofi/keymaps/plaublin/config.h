@@ -24,3 +24,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // #define MASTER_RIGHT
 // #define EE_HANDS
 
+// The default is 5, it's too much!
+#define TAPPING_TOGGLE 2
+
+// Combos are always checked with the keys from the current layer
+#undef COMBO_ONLY_FROM_LAYER
