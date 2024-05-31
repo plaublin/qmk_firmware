@@ -100,7 +100,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //   " then press a letter for the 2 dots accent (ï, ü, ë)
   [_SYMBOLS] = LAYOUT_split_3x5_3(
   //|----------------+----------------+----------------+----------------+----------------|      |----------------+----------------+----------------+----------------+----------------|
-     KC_TAB          , RALT_T(KC_E)   , RALT_T(KC_GRV) , RALT_T(KC_COMM), KC_LPRN        ,       KC_LBRC         , RALT_T(KC_6)   , RSA(KC_QUOT)   , KC_EQL         , RSA(KC_0)      ,
+     KC_TAB          , RALT(KC_E)     , RALT(KC_GRV)   , RALT(KC_COMM)  , KC_LPRN        ,       KC_LBRC         , RALT(KC_6)   , RSA(KC_QUOT)   , KC_EQL         , RSA(KC_0)      ,
   //|----------------+----------------+----------------+----------------+----------------|      |----------------+----------------+----------------+----------------+----------------|
      KC_LSFT         , KC_EXLM        , KC_AT          , KC_HASH        , KC_RPRN        ,       KC_RBRC         , KC_SLSH        , KC_MINS        , KC_DLR         , KC_RSFT        ,
   //|----------------+----------------+----------------+----------------+----------------|      |----------------+----------------+----------------+----------------+----------------|
