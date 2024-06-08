@@ -170,10 +170,10 @@ const key_override_t **key_overrides = (const key_override_t *[]){
 //const uint16_t PROGMEM semi_combo[]  = {KC_COMM, KC_DOT, COMBO_END};
 //const uint16_t PROGMEM semi_combo2[] = {RCTL_T(KC_COMM), KC_DOT, COMBO_END};
 //
-//combo_t key_combos[] = {
+combo_t key_combos[] = {
 //    COMBO(semi_combo, KC_SCLN),
 //    COMBO(semi_combo2, KC_SCLN),
-//};
+};
 
 /* ------------------- TAP DANCE ------------------- */
 
