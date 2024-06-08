@@ -54,14 +54,11 @@ void ql_reset(tap_dance_state_t *state, void *user_data);
 
 /* ------------------- LAYERS ------------------- */
 
-// Go to NUM layer while hold, send enter if pressed one
-#define NUMENT LT(_NUMBERS, KC_ENT)
-
 enum planck_layers {
     _MAYA,
     _QWERTY,
     _SYMBOLS,
-    _NUMBERS,
+    _NUM,
     _MOUSE,
     _FUNCTION,
 };
@@ -76,7 +73,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|----------------+----------------+----------------+----------------+----------------|      |----------------+----------------+----------------+----------------+----------------|
      KC_Z            , LCTL_T(KC_X)   , LGUI_T(KC_M)   , LALT_T(KC_C)   , KC_W           ,       KC_J            , RALT_T(KC_P)   , RGUI_T(KC_QUOT), RCTL_T(KC_COMM), KC_DOT         ,
   //|----------------+----------------+----------------+----------------+----------------|      |----------------+----------------+----------------+----------------+----------------|
-                                       TT(_MOUSE)      , TD(TESYM)      , KC_BSPC        ,       KC_SPC          , NUMENT         , KC_NO
+                                       TT(_MOUSE)      , TD(TESYM)      , KC_SPC         ,       KC_BSPC         ,LT(_NUM, KC_ENT), KC_NO
                                     //`--------------------------------------------------'      `-----------------------------------------------'
   ),
 
@@ -88,7 +85,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|----------------+----------------+----------------+----------------+----------------|      |----------------+----------------+----------------+----------------+----------------|
      KC_Z            , LCTL_T(KC_X)   , LGUI_T(KC_C)   , LALT_T(KC_V)   , KC_B           ,       KC_N            , RALT_T(KC_M)   , RGUI_T(KC_COMM), RCTL_T(KC_DOT) , KC_QUOT        ,
   //|----------------+----------------+----------------+----------------+----------------|      |----------------+----------------+----------------+----------------+----------------|
-                                        TT(_MOUSE)     , TD(TESYM)      , KC_BSPC        ,       KC_SPC          , NUMENT         , KC_NO
+                                        TT(_MOUSE)     , TD(TESYM)      , KC_SPC         ,       KC_BSPC         ,LT(_NUM, KC_ENT), KC_NO
                                     //`--------------------------------------------------'      `-----------------------------------------------'
   ),
 
@@ -100,7 +97,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //   " then press a letter for the 2 dots accent (ï, ü, ë)
   [_SYMBOLS] = LAYOUT_split_3x5_3(
   //|----------------+----------------+----------------+----------------+----------------|      |----------------+----------------+----------------+----------------+----------------|
-     KC_TAB          , RALT(KC_E)     , RALT(KC_GRV)   , RALT(KC_COMM)  , KC_LPRN        ,       KC_LBRC         , RALT(KC_6)   , RSA(KC_QUOT)   , KC_EQL         , RSA(KC_0)      ,
+     KC_TAB          , RALT(KC_E)     , RALT(KC_GRV)   , RALT(KC_COMM)  , KC_LPRN        ,       KC_LBRC         , RALT(KC_6)     , RSA(KC_QUOT)   , KC_EQL         , RSA(KC_0)      ,
   //|----------------+----------------+----------------+----------------+----------------|      |----------------+----------------+----------------+----------------+----------------|
      KC_LSFT         , KC_EXLM        , KC_AT          , KC_HASH        , KC_RPRN        ,       KC_RBRC         , KC_SLSH        , KC_MINS        , KC_DLR         , KC_RSFT        ,
   //|----------------+----------------+----------------+----------------+----------------|      |----------------+----------------+----------------+----------------+----------------|
@@ -122,13 +119,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                     //`--------------------------------------------------'      `-----------------------------------------------'
   ),
 
-  [_NUMBERS] = LAYOUT_split_3x5_3(
+  [_NUM] = LAYOUT_split_3x5_3(
   //|----------------+----------------+----------------+----------------+----------------|      |----------------+----------------+----------------+----------------+----------------|
      KC_INS          , KC_HOME        , KC_UP          , KC_END         , KC_PGUP        ,       KC_SLSH         , KC_7           , KC_8           , KC_9           , KC_ASTR        ,
   //|----------------+----------------+----------------+----------------+----------------|      |----------------+----------------+----------------+----------------+----------------|
      _______         , KC_LEFT        , KC_DOWN        , KC_RGHT        , KC_PGDN        ,       KC_0            , KC_1           , KC_2           , KC_3           , KC_MINS        ,
   //|----------------+----------------+----------------+----------------+----------------|      |----------------+----------------+----------------+----------------+----------------|
-     KC_DEL          , _______        , _______        , _______        , KC_RALT        ,       KC_DOT          , KC_4           , KC_5           , KC_6           , KC_EQL         ,
+     KC_DEL          , _______        , LGUI_T(KC_LT)  , LALT_T(KC_GT)  , KC_RALT        ,       KC_DOT          , KC_4           , KC_5           , KC_6           , KC_EQL         ,
   //|----------------+----------------+----------------+----------------+----------------|      |----------------+----------------+----------------+----------------+----------------|
                                         _______        , _______        , _______        ,       _______         , _______        , KC_NO
                                     //`--------------------------------------------------'      `-----------------------------------------------'
@@ -151,7 +148,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* ------------------ KEY OVERRIDE ------------------- */
 
 const key_override_t bkspc_key_override  = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DEL);
-const key_override_t numdot_key_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_DOT, KC_COMM, _NUMBERS);
+const key_override_t numdot_key_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_DOT, KC_COMM, _NUM);
 const key_override_t up_key_override     = ko_make_with_layers_and_negmods(MOD_MASK_CTRL, KC_UP, KC_PGUP, ~0, MOD_MASK_GUI);
 const key_override_t dn_key_override     = ko_make_with_layers_and_negmods(MOD_MASK_CTRL, KC_DOWN, KC_PGDN, ~0, MOD_MASK_GUI);
 const key_override_t left_key_override   = ko_make_with_layers_and_negmods(MOD_MASK_CTRL, KC_LEFT, KC_HOME, ~0, MOD_MASK_GUI);
@@ -170,13 +167,13 @@ const key_override_t **key_overrides = (const key_override_t *[]){
 
 /* -------------------- COMBOS --------------------- */
 
-const uint16_t PROGMEM semi_combo[]  = {KC_COMM, KC_DOT, COMBO_END};
-const uint16_t PROGMEM semi_combo2[] = {RCTL_T(KC_COMM), KC_DOT, COMBO_END};
-
-combo_t key_combos[] = {
-    COMBO(semi_combo, KC_SCLN),
-    COMBO(semi_combo2, KC_SCLN),
-};
+//const uint16_t PROGMEM semi_combo[]  = {KC_COMM, KC_DOT, COMBO_END};
+//const uint16_t PROGMEM semi_combo2[] = {RCTL_T(KC_COMM), KC_DOT, COMBO_END};
+//
+//combo_t key_combos[] = {
+//    COMBO(semi_combo, KC_SCLN),
+//    COMBO(semi_combo2, KC_SCLN),
+//};
 
 /* ------------------- TAP DANCE ------------------- */
 
