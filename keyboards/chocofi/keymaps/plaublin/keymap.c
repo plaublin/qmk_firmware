@@ -133,9 +133,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_FUNCTION] = LAYOUT_split_3x5_3(
   //|----------------+----------------+----------------+----------------+----------------|      |----------------+----------------+----------------+----------------+----------------|
-     DF(_QWERTY)     , KC_NO          , KC_NO          , KC_MPLY        , KC_VOLU        ,       KC_F1           , KC_F2          , KC_F3          , KC_F4          , KC_NO          ,
+     DF(_RECURVA)    , KC_NO          , KC_NO          , KC_MPLY        , KC_VOLU        ,       KC_F1           , KC_F2          , KC_F3          , KC_F4          , KC_NO          ,
   //|----------------+----------------+----------------+----------------+----------------|      |----------------+----------------+----------------+----------------+----------------|
-     DF(_RECURVA)    , KC_NO          , KC_NO          , KC_MSTP        , KC_VOLD        ,       KC_F5           , KC_F6          , KC_F7          , KC_F8          , KC_NO          ,
+     DF(_QWERTY)     , KC_NO          , KC_NO          , KC_MSTP        , KC_VOLD        ,       KC_F5           , KC_F6          , KC_F7          , KC_F8          , KC_NO          ,
   //|----------------+----------------+----------------+----------------+----------------|      |----------------+----------------+----------------+----------------+----------------|
      QK_BOOT         , _______        , _______        , _______        , KC_MUTE        ,       KC_F9           , KC_F10         , KC_F11         , KC_F12         , KC_NO          ,
   //|----------------+----------------+----------------+----------------+----------------|      |----------------+----------------+----------------+----------------+----------------|
@@ -164,6 +164,16 @@ const key_override_t **key_overrides = (const key_override_t *[]){
     &right_key_override,
     NULL // Null terminate the array of overrides!
 };
+
+
+/* ------------------- TRI LAYER ------------------- */
+
+layer_state_t layer_state_set_user(layer_state_t state) {
+    state = update_tri_layer_state(state, _SYMBOLS, _NUM, _FUNCTION);
+
+    return state;
+}
+
 
 /* -------------------- COMBOS --------------------- */
 
