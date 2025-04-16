@@ -13,7 +13,7 @@ enum planck_layers {
 };
 
 #define LT_SYMTAB LT(_SYMBOLS, KC_TAB)
-#define LT_NUMBSP LT(_NUMBERS, KC_BSPC)
+#define LT_NUMENT LT(_NUMBERS, KC_ENT)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -21,14 +21,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        KC_TAB , KC_V   , KC_L   , KC_H , KC_G     , KC_K  , KC_Q   , KC_F     , KC_O   , KC_U   , KC_J   , MO(_FUNCTION),
        KC_LSFT, KC_S   , KC_R   , KC_N , KC_T     , KC_B  , KC_Y   , KC_C     , KC_E   , KC_A   , KC_I   , KC_SLSH      ,
        QK_GESC, KC_Z   , KC_X   , KC_M , KC_D     , KC_P  , KC_QUOT, KC_W     , KC_DOT , KC_SCLN, KC_COMM, KC_UP        ,
-       KC_LCTL, KC_LALT, KC_LGUI, KC_NO, LT_SYMTAB, KC_SPC, KC_ENT , LT_NUMBSP, KC_RALT, KC_LEFT, KC_RGHT, KC_DOWN
+       KC_LCTL, KC_LALT, KC_LGUI, KC_NO, LT_SYMTAB, KC_SPC, KC_BSPC, LT_NUMENT, KC_RALT, KC_LEFT, KC_RGHT, KC_DOWN
     ),
 
     [_QWERTY] = LAYOUT_ortho_4x12(
-       KC_TAB , KC_Q   , KC_W   , KC_E , KC_R     , KC_T  , KC_Y  , KC_U     , KC_I   , KC_O   , KC_P   , MO(_FUNCTION),
-       KC_LSFT, KC_A   , KC_S   , KC_D , KC_F     , KC_G  , KC_H  , KC_J     , KC_K   , KC_L   , KC_SCLN, KC_QUOT      ,
-       QK_GESC, KC_Z   , KC_X   , KC_C , KC_V     , KC_B  , KC_N  , KC_M     , KC_COMM, KC_DOT , KC_SLSH, KC_UP        ,
-       KC_LCTL, KC_LALT, KC_LGUI, KC_NO, LT_SYMTAB, KC_SPC, KC_ENT, LT_NUMBSP, KC_RALT, KC_LEFT, KC_RGHT, KC_DOWN
+       KC_TAB , KC_Q   , KC_W   , KC_E , KC_R     , KC_T  , KC_Y   , KC_U     , KC_I   , KC_O   , KC_P   , MO(_FUNCTION),
+       KC_LSFT, KC_A   , KC_S   , KC_D , KC_F     , KC_G  , KC_H   , KC_J     , KC_K   , KC_L   , KC_SCLN, KC_QUOT      ,
+       QK_GESC, KC_Z   , KC_X   , KC_C , KC_V     , KC_B  , KC_N   , KC_M     , KC_COMM, KC_DOT , KC_SLSH, KC_UP        ,
+       KC_LCTL, KC_LALT, KC_LGUI, KC_NO, LT_SYMTAB, KC_SPC, KC_BSPC, LT_NUMENT, KC_RALT, KC_LEFT, KC_RGHT, KC_DOWN
     ),
 
     [_SYMBOLS] = LAYOUT_ortho_4x12(
