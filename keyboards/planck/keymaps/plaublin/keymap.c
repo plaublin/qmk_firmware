@@ -41,7 +41,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [_MOUSE] = LAYOUT_ortho_4x12(
-       _______,TG(_MOUSE),KC_BTN3,KC_WH_U,QK_GESC,KC_NO,KC_BTN3,KC_BTN1,KC_MS_U,KC_BTN2,KC_NO                              ,_______,
+       _______,KC_NO,KC_BTN3,KC_WH_U,QK_GESC,KC_NO,KC_BTN3,KC_BTN1,KC_MS_U,KC_BTN2,TG(_MOUSE)                              ,_______,
        _______,KC_NO,KC_BTN1,KC_WH_D,KC_BTN2,KC_NO,KC_NO,KC_MS_L,KC_MS_D,KC_MS_R,OSM(MOD_RSFT)                             ,_______,
        _______,OSM(MOD_LGUI),OSM(MOD_LALT),OSM(MOD_LCTL),KC_NO,KC_NO,KC_NO,KC_NO,OSM(MOD_RCTL),OSM(MOD_RALT),OSM(MOD_RGUI) ,_______,
        _______, _______,_______,_______,_______,_______,_______,_______,_______,_______,_______                            ,_______
@@ -79,6 +79,7 @@ const key_override_t **key_overrides = (const key_override_t *[]){
     &up_key_override,
     &dn_key_override,
     &left_key_override,
+
     &right_key_override,
     NULL // Null terminate the array of overrides!
 };
@@ -142,12 +143,12 @@ const rgblight_segment_t PROGMEM my_mouse_layer[] = RGBLIGHT_LAYER_SEGMENTS(
 // Now define the array of layers. Later layers take precedence
 const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
         my_focal_layer,
-        my_maya_layer,
         my_qwerty_layer,
-        my_numbers_layer,
         my_symbols_layer,
+        my_numbers_layer,
         my_mouse_layer,
-        all_leds_red
+        all_leds_red,
+        my_maya_layer
         );
 
 // Set up
@@ -158,15 +159,16 @@ void keyboard_post_init_user(void) {
 
 layer_state_t default_layer_state_set_user(layer_state_t state) {
     rgblight_set_layer_state(0, layer_state_cmp(state, _FOCAL));
-    rgblight_set_layer_state(2, layer_state_cmp(state, _QWERTY));
+    rgblight_set_layer_state(1, layer_state_cmp(state, _QWERTY));
 
     return state;
 }
 
 layer_state_t layer_state_set_user(layer_state_t state) {
-    rgblight_set_layer_state(4, layer_state_cmp(state, _NUMBERS));
-    rgblight_set_layer_state(5, layer_state_cmp(state, _MOUSE));
-    rgblight_set_layer_state(6, layer_state_cmp(state, _FUNCTION));
+    rgblight_set_layer_state(2, layer_state_cmp(state, _SYMBOLS));
+    rgblight_set_layer_state(3, layer_state_cmp(state, _NUMBERS));
+    rgblight_set_layer_state(4, layer_state_cmp(state, _MOUSE));
+    rgblight_set_layer_state(5, layer_state_cmp(state, _FUNCTION));
 
     return state;
 }

@@ -98,20 +98,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [_MOUSE] = LAYOUT_split_3x5_3(
-       TG(_MOUSE)   , KC_BTN3      , KC_WH_U      , QK_GESC , KC_NO  , KC_BTN3, KC_BTN1, KC_MS_U      , KC_BTN2      , KC_NO        ,
+       KC_NO        , KC_BTN3      , KC_WH_U      , QK_GESC , KC_NO  , KC_BTN3, KC_BTN1, KC_MS_U      , KC_BTN2      , TG(_MOUSE)   ,
        KC_NO        , KC_BTN1      , KC_WH_D      , KC_BTN2 , KC_NO  , KC_NO  , KC_MS_L, KC_MS_D      , KC_MS_R      , OSM(MOD_RSFT),
        OSM(MOD_LGUI), OSM(MOD_LALT), OSM(MOD_LCTL), KC_NO   , KC_NO  , KC_NO  , KC_NO  , OSM(MOD_RCTL), OSM(MOD_RALT), OSM(MOD_RGUI),
                                      _______      , _______ , _______, _______, _______, _______
     ),
-
-/*
-    [_FUNCTION] = LAYOUT_ortho_4x12(
-       _______, TT(_MOUSE),DF(_FOCAL),DF(_QWERTY),KC_MPLY,KC_VOLU,KC_F1,KC_F2,KC_F3,KC_F4,KC_DEL     ,_______,
-       _______, QK_GESC,QK_BOOT,KC_NO,KC_MSTP,KC_VOLD,KC_F5,KC_F6,KC_F7,KC_F8,OSM(MOD_RALT)          ,_______,
-       _______, OSM(MOD_LGUI),OSM(MOD_LALT),OSM(MOD_LCTL),KC_NO,KC_MUTE,KC_F9,KC_F10,KC_F11,KC_F12,QK_BOOT,_______,
-       _______,  _______,_______,_______,_______,_______,_______,_______,_______,_______,_______     ,_______
-      ),
-*/
 
     [_NUMBERS] = LAYOUT_split_3x5_3(
        KC_INS       , KC_HOME      , KC_UP        , KC_END , KC_DEL , KC_SLSH, KC_7, KC_8, KC_9, KC_ASTR,
