@@ -18,193 +18,111 @@
 
 #include QMK_KEYBOARD_H
 
-/* ------------------- TAP DANCE ------------------- */
+/* ------------------- LAYERS ------------------- */
 
-// Define a type for as many tap dance states as you need
-typedef enum {
-    TD_NONE,
-    TD_UNKNOWN,
-    TD_SINGLE_TAP,
-    TD_SINGLE_HOLD,
-    TD_DOUBLE_TAP
-} td_state_t;
-
-typedef struct {
-    bool is_press_action;
-    td_state_t state;
-} td_tap_t;
-
-    // Our custom tap dance key; add any other tap dance keys to this enum
-    enum {
-        // SFTBSP pressed once: space
-        // SFTBSP pressed twice: tab
-        // SFTBSP hold: shift
-        SFTBSP,
-    };
-
-    // Declare the functions to be used with your tap dance key(s)
-
-    // Function associated with all tap dances
-    td_state_t cur_dance(tap_dance_state_t *state);
-
-    // Functions associated with individual tap dances
-    void ql_finished(tap_dance_state_t *state, void *user_data);
-    void ql_reset(tap_dance_state_t *state, void *user_data);
-
-
-    /* ------------------- LAYERS ------------------- */
-
-    enum planck_layers {
-        _FOCAL,
-        _QWERTY,
-        _SYMBOLS,
-        _NUMBERS,
-        _MOUSE,
-        _FUNCTION,
-    };
+enum planck_layers {
+    _FOCAL,
+    _QWERTY,
+    _SYMBOLS,
+    _NUMBERS,
+    _MOUSE,
+    _FUNCTION,
+};
 
 #define LT_SYMESC LT(_SYMBOLS, KC_ESC)
 #define LT_NUMBSP LT(_NUMBERS, KC_BSPC)
 #define MT_SFTSPC MT(MOD_LSFT, KC_SPC)
 #define MT_SFTENT MT(MOD_LSFT, KC_ENT)
 
-    const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-        [_FOCAL] = LAYOUT_split_3x5_3(
-            KC_V, KC_L, KC_H , KC_G     , KC_K      , KC_Q     , KC_F     , KC_O  , KC_U   , KC_J   ,
-            KC_S, KC_R, KC_N , KC_T     , KC_B      , KC_Y     , KC_C     , KC_E  , KC_A   , KC_I   ,
-            KC_Z, KC_X, KC_M , KC_D     , KC_P      , KC_QUOT  , KC_W     , KC_DOT, KC_SCLN, KC_COMM,
-                        KC_NO, LT_SYMESC, TD(SFTBSP), MT_SFTENT, LT_NUMBSP, KC_NO
-        ),
+    [_FOCAL] = LAYOUT_split_3x5_3(
+            KC_V, KC_L, KC_H , KC_G     , KC_K     , KC_Q     , KC_F     , KC_O  , KC_U   , KC_J   ,
+            KC_S, KC_R, KC_N , KC_T     , KC_B     , KC_Y     , KC_C     , KC_E  , KC_A   , KC_I   ,
+            KC_Z, KC_X, KC_M , KC_D     , KC_P     , KC_QUOT  , KC_W     , KC_DOT, KC_SCLN, KC_COMM,
+                        KC_NO, LT_SYMESC, MT_SFTSPC, MT_SFTENT, LT_NUMBSP, KC_NO
+            ),
 
-        [_QWERTY] = LAYOUT_split_3x5_3(
-            KC_Q, KC_W, KC_E , KC_R     , KC_T      , KC_Y     , KC_U     , KC_I   , KC_O  , KC_P   ,
-            KC_A, KC_S, KC_D , KC_F     , KC_G      , KC_H     , KC_J     , KC_K   , KC_L  , KC_SCLN,
-            KC_Z, KC_X, KC_C , KC_V     , KC_B      , KC_N     , KC_M     , KC_COMM, KC_DOT, KC_QUOT,
-                        KC_NO, LT_SYMESC, TD(SFTBSP), MT_SFTENT, LT_NUMBSP, KC_NO
-        ),
+    [_QWERTY] = LAYOUT_split_3x5_3(
+            KC_Q, KC_W, KC_E , KC_R     , KC_T     , KC_Y     , KC_U     , KC_I   , KC_O  , KC_P   ,
+            KC_A, KC_S, KC_D , KC_F     , KC_G     , KC_H     , KC_J     , KC_K   , KC_L  , KC_SCLN,
+            KC_Z, KC_X, KC_C , KC_V     , KC_B     , KC_N     , KC_M     , KC_COMM, KC_DOT, KC_QUOT,
+                        KC_NO, LT_SYMESC, MT_SFTSPC, MT_SFTENT, LT_NUMBSP, KC_NO
+            ),
 
-        //Top row contains everything for the French accentued letters:
-        // é
-        // ` then press a letter for the grave accent (è, à, ù)
-        // ç
-        // ^ then press a letter for the circonflexe accent (ê, ô, â, î, û)
-        // " then press a letter for the 2 dots accent (ï, ü, ë)
-        [_SYMBOLS] = LAYOUT_split_3x5_3(
+    //Top row contains everything for the French accentued letters:
+    // é
+    // ` then press a letter for the grave accent (è, à, ù)
+    // ç
+    // ^ then press a letter for the circonflexe accent (ê, ô, â, î, û)
+    // " then press a letter for the 2 dots accent (ï, ü, ë)
+    [_SYMBOLS] = LAYOUT_split_3x5_3(
             KC_GRV       , RALT(KC_E)   , RALT(KC_GRV) , RALT(KC_COMM), RALT(KC_6), RSA(KC_QUOT), KC_LCBR, KC_RCBR, KC_AMPR, KC_NO,
             KC_CIRC      , KC_EXLM      , KC_AT        , KC_HASH      , KC_PERC   , RSA(KC_0)   , KC_LPRN, KC_RPRN, KC_SLSH, KC_DLR,
-            OSM(MOD_LGUI), OSM(MOD_LALT), OSM(MOD_LCTL), KC_NO        , KC_NO     , KC_NO       , KC_LBRC, KC_RBRC, KC_BSLS, KC_NO,
+            OSM(MOD_LGUI), OSM(MOD_LALT), OSM(MOD_LCTL), KC_TAB       , KC_NO     , KC_NO       , KC_LBRC, KC_RBRC, KC_BSLS, KC_NO,
                                           _______      , _______      , _______   , _______     , _______, _______
-        ),
+            ),
 
-        [_MOUSE] = LAYOUT_split_3x5_3(
-           KC_NO        , KC_BTN3      , KC_WH_U      , QK_GESC , KC_NO  , KC_BTN3, KC_BTN1, KC_MS_U      , KC_BTN2      , TG(_MOUSE)   ,
-           KC_NO        , KC_BTN1      , KC_WH_D      , KC_BTN2 , KC_NO  , KC_NO  , KC_MS_L, KC_MS_D      , KC_MS_R      , OSM(MOD_RSFT),
-           OSM(MOD_LGUI), OSM(MOD_LALT), OSM(MOD_LCTL), KC_NO   , KC_NO  , KC_NO  , KC_NO  , OSM(MOD_RCTL), OSM(MOD_RALT), OSM(MOD_RGUI),
-                                         _______      , _______ , _______, _______, _______, _______
-        ),
+    [_MOUSE] = LAYOUT_split_3x5_3(
+            KC_NO        , KC_BTN3      , KC_WH_U      , QK_GESC , KC_NO  , KC_BTN3, KC_BTN1, KC_MS_U      , KC_BTN2      , TG(_MOUSE)   ,
+            KC_NO        , KC_BTN1      , KC_WH_D      , KC_BTN2 , KC_NO  , KC_NO  , KC_MS_L, KC_MS_D      , KC_MS_R      , OSM(MOD_RSFT),
+            OSM(MOD_LGUI), OSM(MOD_LALT), OSM(MOD_LCTL), KC_TAB  , KC_NO  , KC_NO  , KC_NO  , OSM(MOD_RCTL), OSM(MOD_RALT), OSM(MOD_RGUI),
+                                          _______      , _______ , _______, _______, _______, _______
+            ),
 
-        [_NUMBERS] = LAYOUT_split_3x5_3(
-           KC_INS       , KC_HOME      , KC_UP        , KC_END , KC_DEL , KC_SLSH, KC_7, KC_8, KC_9, KC_ASTR,
-           QK_GESC      , KC_LEFT      , KC_DOWN      , KC_RGHT, KC_PGUP, KC_0   , KC_1, KC_2, KC_3, KC_MINS,
-           OSM(MOD_LGUI), OSM(MOD_LALT), OSM(MOD_LCTL), KC_PSCR, KC_PGDN, KC_EQL , KC_4, KC_5, KC_6, KC_DOT ,
-                                         _______      , _______, _______, _______, _______, _______
-        ),
+    [_NUMBERS] = LAYOUT_split_3x5_3(
+            KC_INS       , KC_HOME      , KC_UP        , KC_END , KC_DEL  , KC_SLSH, KC_7   , KC_8   , KC_9, KC_ASTR,
+            QK_GESC      , KC_LEFT      , KC_DOWN      , KC_RGHT, KC_PGUP , KC_0   , KC_1   , KC_2   , KC_3, KC_MINS,
+            OSM(MOD_LGUI), OSM(MOD_LALT), OSM(MOD_LCTL), KC_TAB , KC_PGDN , KC_EQL , KC_4   , KC_5   , KC_6, KC_DOT ,
+                                          _______      , _______, _______, _______, _______, _______
+            ),
 
-        [_FUNCTION] = LAYOUT_split_3x5_3(
-           KC_DEL , KC_F1, KC_F2  , KC_F3  , KC_F4  , KC_MPLY, KC_VOLU, DF(_FOCAL), DF(_QWERTY)  , TT(_MOUSE),
-           QK_GESC, KC_F5, KC_F6  , KC_F7  , KC_F8  , KC_MSTP, KC_VOLD, KC_NO     , KC_NO        , KC_NO     ,
-           KC_NO  , KC_F9, KC_F10 , KC_F11 , KC_F12 , KC_NO  , KC_MUTE, KC_NO     , OSM(MOD_RALT), QK_BOOT   ,
-                           _______, _______, _______, _______, _______, _______
+    [_FUNCTION] = LAYOUT_split_3x5_3(
+            KC_DEL , KC_F1, KC_F2  , KC_F3  , KC_F4  , KC_MPLY, KC_VOLU, DF(_FOCAL), DF(_QWERTY)  , TT(_MOUSE),
+            QK_GESC, KC_F5, KC_F6  , KC_F7  , KC_F8  , KC_MSTP, KC_VOLD, KC_NO     , KC_NO        , KC_NO     ,
+            KC_PSCR, KC_F9, KC_F10 , KC_F11 , KC_F12 , KC_NO  , KC_MUTE, KC_NO     , OSM(MOD_RALT), QK_BOOT   ,
+                            _______, _______, _______, _______, _______, _______
 
-        ),
-    };
-
-
-    /* ------------------ KEY OVERRIDE ------------------- */
-
-    const key_override_t bkspc_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DEL);
-    const key_override_t numdot_key_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_DOT, KC_COMM, 1 << _NUMBERS);
-    const key_override_t up_key_override = ko_make_with_layers_and_negmods(MOD_MASK_CTRL, KC_UP, KC_PGUP, ~0, MOD_MASK_GUI);
-    const key_override_t dn_key_override = ko_make_with_layers_and_negmods(MOD_MASK_CTRL, KC_DOWN, KC_PGDN, ~0, MOD_MASK_GUI);
-    const key_override_t left_key_override = ko_make_with_layers_and_negmods(MOD_MASK_CTRL, KC_LEFT, KC_HOME, ~0, MOD_MASK_GUI);
-    const key_override_t right_key_override = ko_make_with_layers_and_negmods(MOD_MASK_CTRL, KC_RGHT, KC_END, ~0, MOD_MASK_GUI);
-
-    // This globally defines all key overrides to be used
-    const key_override_t **key_overrides = (const key_override_t *[]){
-        &bkspc_key_override,
-            &numdot_key_override,
-            &up_key_override,
-            &dn_key_override,
-            &left_key_override,
-            &right_key_override,
-            NULL // Null terminate the array of overrides!
-    };
+            ),
+};
 
 
-    /* ------------------- TRI LAYER ------------------- */
+/* ------------------ KEY OVERRIDE ------------------- */
 
-    layer_state_t layer_state_set_user(layer_state_t state) {
-        state = update_tri_layer_state(state, _SYMBOLS, _NUMBERS, _FUNCTION);
-        return state;
-    }
+const key_override_t bkspc_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DEL);
+const key_override_t numdot_key_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_DOT, KC_COMM, 1 << _NUMBERS);
+const key_override_t up_key_override = ko_make_with_layers_and_negmods(MOD_MASK_CTRL, KC_UP, KC_PGUP, ~0, MOD_MASK_GUI);
+const key_override_t dn_key_override = ko_make_with_layers_and_negmods(MOD_MASK_CTRL, KC_DOWN, KC_PGDN, ~0, MOD_MASK_GUI);
+const key_override_t left_key_override = ko_make_with_layers_and_negmods(MOD_MASK_CTRL, KC_LEFT, KC_HOME, ~0, MOD_MASK_GUI);
+const key_override_t right_key_override = ko_make_with_layers_and_negmods(MOD_MASK_CTRL, KC_RGHT, KC_END, ~0, MOD_MASK_GUI);
+
+// This globally defines all key overrides to be used
+const key_override_t **key_overrides = (const key_override_t *[]){
+    &bkspc_key_override,
+        &numdot_key_override,
+        &up_key_override,
+        &dn_key_override,
+        &left_key_override,
+        &right_key_override,
+        NULL // Null terminate the array of overrides!
+};
 
 
-    /* -------------------- COMBOS --------------------- */
+/* ------------------- TRI LAYER ------------------- */
 
-    //const uint16_t PROGMEM semi_combo[]= {KC_COMM, KC_DOT, COMBO_END};
-    //const uint16_t PROGMEM semi_combo2[] = {RCTL_T(KC_COMM), KC_DOT, COMBO_END};
-    //
-    combo_t key_combos[] = {
-        //COMBO(semi_combo, KC_SCLN),
-        //COMBO(semi_combo2, KC_SCLN),
-    };
+layer_state_t layer_state_set_user(layer_state_t state) {
+    state = update_tri_layer_state(state, _SYMBOLS, _NUMBERS, _FUNCTION);
+    return state;
+}
 
-    /* ------------------- TAP DANCE ------------------- */
 
-    // Determine the current tap dance state
-    td_state_t cur_dance(tap_dance_state_t *state) {
-        if (state->count == 1) {
-            if (!state->pressed) return TD_SINGLE_TAP;
-            else return TD_SINGLE_HOLD;
-        } else if (state->count == 2) return TD_DOUBLE_TAP;
-        else return TD_UNKNOWN;
-    }
+/* -------------------- COMBOS --------------------- */
 
-    // Initialize tap structure associated with example tap dance key
-    static td_tap_t tesym_tap_state = {
-        .is_press_action = true,
-        .state = TD_NONE
-    };
-
-    // Functions that control what our tap dance key does
-    void tesym_finished(tap_dance_state_t *state, void *user_data) {
-        tesym_tap_state.state = cur_dance(state);
-        switch (tesym_tap_state.state) {
-            case TD_SINGLE_TAP:
-                tap_code(KC_SPC);
-                break;
-            case TD_SINGLE_HOLD:
-                register_mods(MOD_BIT(KC_LSFT));
-                break;
-            case TD_DOUBLE_TAP:
-                tap_code(KC_TAB);
-                break;
-            default:
-                break;
-        }
-    }
-
-    void tesym_reset(tap_dance_state_t *state, void *user_data) {
-        // If the key was held down and now is released then switch off the layer
-        if (tesym_tap_state.state == TD_SINGLE_HOLD) {
-            unregister_mods(MOD_BIT(KC_LSFT));
-        }
-        tesym_tap_state.state = TD_NONE;
-    }
-
-    // Associate our tap dance key with its functionality
-    tap_dance_action_t tap_dance_actions[] = {
-        [SFTBSP] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, tesym_finished, tesym_reset)
+//const uint16_t PROGMEM semi_combo[]= {KC_COMM, KC_DOT, COMBO_END};
+//const uint16_t PROGMEM semi_combo2[] = {RCTL_T(KC_COMM), KC_DOT, COMBO_END};
+//
+combo_t key_combos[] = {
+    //COMBO(semi_combo, KC_SCLN),
+    //COMBO(semi_combo2, KC_SCLN),
 };
 
