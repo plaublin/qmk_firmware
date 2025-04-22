@@ -1,16 +1,16 @@
 #include <locale.h>
 #include QMK_KEYBOARD_H
 
-/* ------------------- LAYERS ------------------- */
+    /* ------------------- LAYERS ------------------- */
 
-enum planck_layers {
-    _FOCAL,
-    _QWERTY,
-    _SYMBOLS,
-    _NUMBERS,
-    _MOUSE,
-    _FUNCTION,
-};
+    enum planck_layers {
+        _FOCAL,
+        _QWERTY,
+        _SYMBOLS,
+        _NUMBERS,
+        _MOUSE,
+        _FUNCTION,
+    };
 
 #define LT_SYMESC LT(_SYMBOLS, KC_ESC)
 #define LT_NUMBSP LT(_NUMBERS, KC_BSPC)
