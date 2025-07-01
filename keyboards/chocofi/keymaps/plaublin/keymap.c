@@ -21,7 +21,7 @@
 /* ------------------- LAYERS ------------------- */
 
 enum planck_layers {
-    _FOCAL,
+    _GALLIUM,
     _QWERTY,
     _SYMBOLS,
     _NUMBERS,
@@ -36,10 +36,10 @@ enum planck_layers {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-    [_FOCAL] = LAYOUT_split_3x5_3(
-            KC_V, KC_L, KC_H , KC_G     , KC_K     , KC_Q     , KC_F     , KC_O  , KC_U   , KC_J   ,
-            KC_S, KC_R, KC_N , KC_T     , KC_B     , KC_Y     , KC_C     , KC_E  , KC_A   , KC_I   ,
-            KC_Z, KC_X, KC_M , KC_D     , KC_P     , KC_QUOT  , KC_W     , KC_DOT, KC_SCLN, KC_COMM,
+    [_GALLIUM] = LAYOUT_split_3x5_3(
+            KC_B, KC_L, KC_D , KC_C     , KC_V     , KC_J , KC_F , KC_O    , KC_U    , KC_COMM ,
+            KC_N, KC_R, KC_T , KC_S     , KC_G     , KC_Y , KC_H , KC_A    , KC_E    , KC_I    ,
+            KC_X, KC_Q, KC_M , KC_W     , KC_Z     , KC_K , KC_P , KC_QUOT , KC_SCLN , KC_DOT  ,
                         KC_NO, LT_SYMESC, MT_SFTSPC, MT_SFTENT, LT_NUMBSP, KC_NO
             ),
 
@@ -51,15 +51,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             ),
 
     //Top row contains everything for the French accentued letters:
+    // " then press a letter for the 2 dots accent (ï, ü, ë)
+    // ^ then press a letter for the circonflexe accent (ê, ô, â, î, û)
+    // ç
     // é
     // ` then press a letter for the grave accent (è, à, ù)
-    // ç
-    // ^ then press a letter for the circonflexe accent (ê, ô, â, î, û)
-    // " then press a letter for the 2 dots accent (ï, ü, ë)
+    // frequence order: é ` ç ^ "
     [_SYMBOLS] = LAYOUT_split_3x5_3(
-            KC_GRV       , RALT(KC_E)   , RALT(KC_GRV) , RALT(KC_COMM), RALT(KC_6), RSA(KC_QUOT), KC_LCBR, KC_RCBR, KC_AMPR, KC_NO,
+            KC_GRV       , RALT(KC_QUOT)   , RALT(KC_6) , RALT(KC_COMM), RALT(KC_E), RSA(KC_GRV), KC_LCBR, KC_RCBR, KC_AMPR, KC_LT,
             KC_CIRC      , KC_EXLM      , KC_AT        , KC_HASH      , KC_PERC   , RSA(KC_0)   , KC_LPRN, KC_RPRN, KC_SLSH, KC_DLR,
-            OSM(MOD_LGUI), OSM(MOD_LALT), OSM(MOD_LCTL), KC_TAB       , KC_NO     , KC_NO       , KC_LBRC, KC_RBRC, KC_BSLS, KC_NO,
+            OSM(MOD_LGUI), OSM(MOD_LALT), OSM(MOD_LCTL), KC_TAB       , KC_NO     , KC_NO       , KC_LBRC, KC_RBRC, KC_BSLS, KC_GT,
                                           _______      , _______      , _______   , _______     , _______, _______
             ),
 
@@ -78,9 +79,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             ),
 
     [_FUNCTION] = LAYOUT_split_3x5_3(
-            KC_DEL , KC_F1, KC_F2  , KC_F3  , KC_F4  , KC_MPLY, KC_VOLU, DF(_FOCAL), DF(_QWERTY)  , TT(_MOUSE),
-            QK_GESC, KC_F5, KC_F6  , KC_F7  , KC_F8  , KC_MSTP, KC_VOLD, KC_NO     , KC_NO        , KC_NO     ,
-            KC_PSCR, KC_F9, KC_F10 , KC_F11 , KC_F12 , KC_NO  , KC_MUTE, KC_NO     , OSM(MOD_RALT), QK_BOOT   ,
+            KC_DEL , KC_F1, KC_F2  , KC_F3  , KC_F4  , KC_MPLY, KC_VOLU, DF(_GALLIUM) , DF(_QWERTY)   , TT(_MOUSE),
+            QK_GESC, KC_F5, KC_F6  , KC_F7  , KC_F8  , KC_MSTP, KC_VOLD, KC_NO        , KC_NO         , KC_NO     ,
+            KC_PSCR, KC_F9, KC_F10 , KC_F11 , KC_F12 , KC_NO  , KC_MUTE, KC_NO        , OSM(MOD_RALT) , QK_BOOT   ,
                             _______, _______, _______, _______, _______, _______
 
             ),

@@ -1,16 +1,16 @@
 #include <locale.h>
 #include QMK_KEYBOARD_H
 
-    /* ------------------- LAYERS ------------------- */
+/* ------------------- LAYERS ------------------- */
 
-    enum planck_layers {
-        _FOCAL,
-        _QWERTY,
-        _SYMBOLS,
-        _NUMBERS,
-        _MOUSE,
-        _FUNCTION,
-    };
+enum planck_layers {
+    _GALLIUM,
+    _QWERTY,
+    _SYMBOLS,
+    _NUMBERS,
+    _MOUSE,
+    _FUNCTION,
+};
 
 #define LT_SYMESC LT(_SYMBOLS, KC_ESC)
 #define LT_NUMBSP LT(_NUMBERS, KC_BSPC)
@@ -19,10 +19,10 @@
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-    [_FOCAL] = LAYOUT_ortho_4x12(
-       KC_TAB , KC_V   , KC_L   , KC_H , KC_G     , KC_K     , KC_Q     , KC_F     , KC_O   , KC_U   , KC_J   , MO(_FUNCTION),
-       QK_GESC, KC_S   , KC_R   , KC_N , KC_T     , KC_B     , KC_Y     , KC_C     , KC_E   , KC_A   , KC_I   , KC_SLSH      ,
-       KC_LSFT, KC_Z   , KC_X   , KC_M , KC_D     , KC_P     , KC_QUOT  , KC_W     , KC_DOT , KC_SCLN, KC_COMM, KC_UP        ,
+    [_GALLIUM] = LAYOUT_ortho_4x12(
+       KC_TAB , KC_B   , KC_L   , KC_D , KC_C     , KC_V     , KC_J     , KC_F     , KC_O   , KC_U   , KC_COMM, MO(_FUNCTION),
+       QK_GESC, KC_N   , KC_R   , KC_T , KC_S     , KC_G     , KC_Y     , KC_H     , KC_A   , KC_E   , KC_I   , KC_SLSH      ,
+       KC_LSFT, KC_X   , KC_Q   , KC_M , KC_W     , KC_Z     , KC_K     , KC_P     , KC_QUOT, KC_SCLN, KC_DOT , KC_UP        ,
        KC_LGUI, KC_LALT, KC_LCTL, KC_NO, LT_SYMESC, MT_SFTSPC, MT_SFTENT, LT_NUMBSP, KC_RALT, KC_LEFT, KC_RGHT, KC_DOWN
     ),
 
@@ -34,10 +34,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [_SYMBOLS] = LAYOUT_ortho_4x12(
-       _______, KC_GRV,RALT(KC_E),RALT(KC_GRV),RALT(KC_COMM),RALT(KC_6),RSA(KC_QUOT),KC_LCBR,KC_RCBR,KC_AMPR,KC_NO ,_______,
-       _______, KC_CIRC,KC_EXLM,KC_AT,KC_HASH,KC_PERC,RSA(KC_0),KC_LPRN,KC_RPRN,KC_SLSH,KC_DLR                               ,_______,
-       _______, KC_NO,KC_NO,KC_NO,KC_TAB,KC_NO,KC_NO,KC_LBRC,KC_RBRC,KC_BSLS,KC_NO                                            ,_______,
-       _______, _______,_______,_______,_______,_______,_______,_______,_______,_______,_______                              ,_______
+       _______, KC_GRV,RALT(KC_QUOT),RALT(KC_6),RALT(KC_COMM),RALT(KC_E),RSA(KC_GRV),KC_LCBR,KC_RCBR,KC_AMPR,KC_LT ,_______,
+       _______, KC_CIRC,KC_EXLM,KC_AT,KC_HASH,KC_PERC,RSA(KC_0),KC_LPRN,KC_RPRN,KC_SLSH,KC_DLR                     ,_______,
+       _______, OSM(MOD_LGUI),OSM(MOD_LALT),OSM(MOD_LCTL),KC_TAB,KC_NO,KC_NO,KC_LBRC,KC_RBRC,KC_BSLS,KC_GT         ,_______,
+       _______, _______,_______,_______,_______,_______,_______,_______,_______,_______,_______                    ,_______
     ),
 
     [_MOUSE] = LAYOUT_ortho_4x12(
@@ -55,10 +55,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [_FUNCTION] = LAYOUT_ortho_4x12(
-       _______, KC_DEL , KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_MPLY, KC_VOLU , DF(_FOCAL), DF(_QWERTY)  , TT(_MOUSE), _______,
-       _______, QK_GESC, KC_F5  , KC_F6  , KC_F7  , KC_F8  , KC_MSTP, KC_VOLD , KC_NO     , KC_NO        , KC_NO     , _______,
-       _______, KC_PSCR  , KC_F9  , KC_F10 , KC_F11 , KC_F12 , KC_NO  , KC_MUTE , KC_NO     , OSM(MOD_RALT), QK_BOOT   , _______,
-       _______, _______, _______, _______,_______ ,_______ ,_______ , _______ ,_______    ,_______       ,_______    , _______
+       _______, KC_DEL , KC_F1  , KC_F2  , KC_F3 , KC_F4 , KC_MPLY, KC_VOLU, DF(_GALLIUM), DF(_QWERTY)  , TT(_MOUSE), _______,
+       _______, QK_GESC, KC_F5  , KC_F6  , KC_F7 , KC_F8 , KC_MSTP, KC_VOLD, KC_NO       , KC_NO        , KC_NO     , _______,
+       _______, KC_PSCR, KC_F9  , KC_F10 , KC_F11, KC_F12, KC_NO  , KC_MUTE, KC_NO       , OSM(MOD_RALT), QK_BOOT   , _______,
+       _______, _______, _______, _______,_______,_______, _______, _______, _______     , _______      , _______   , _______
     ),
 };
 
@@ -158,7 +158,7 @@ void keyboard_post_init_user(void) {
 }
 
 layer_state_t default_layer_state_set_user(layer_state_t state) {
-    rgblight_set_layer_state(0, layer_state_cmp(state, _FOCAL));
+    rgblight_set_layer_state(0, layer_state_cmp(state, _GALLIUM));
     rgblight_set_layer_state(1, layer_state_cmp(state, _QWERTY));
 
     return state;
