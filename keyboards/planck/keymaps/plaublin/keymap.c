@@ -4,6 +4,7 @@
 /* ------------------- LAYERS ------------------- */
 
 enum planck_layers {
+    _FOCAL2,
     _GALLIUM,
     _QWERTY,
     _SYMBOLS,
@@ -18,6 +19,13 @@ enum planck_layers {
 #define MT_SFTENT MT(MOD_LSFT, KC_ENT)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+
+    [_FOCAL2] = LAYOUT_ortho_4x12(
+       KC_TAB , KC_V   , KC_L   , KC_H , KC_G     , KC_K     , KC_Q     , KC_F     , KC_O   , KC_U   , KC_J   , MO(_FUNCTION),
+       QK_GESC, KC_S   , KC_R   , KC_N , KC_T     , KC_B     , KC_Y     , KC_C     , KC_A   , KC_E   , KC_I   , KC_SLSH      ,
+       KC_LSFT, KC_W   , KC_X   , KC_M , KC_D     , KC_Z     , KC_QUOT  , KC_P     , KC_COMM, KC_SCLN, KC_DOT , KC_UP        ,
+       KC_LGUI, KC_LALT, KC_LCTL, KC_NO, LT_SYMESC, MT_SFTSPC, MT_SFTENT, LT_NUMBSP, KC_RALT, KC_LEFT, KC_RGHT, KC_DOWN
+    ),
 
     [_GALLIUM] = LAYOUT_ortho_4x12(
        KC_TAB , KC_B   , KC_L   , KC_D , KC_C     , KC_V     , KC_J     , KC_F     , KC_O   , KC_U   , KC_COMM, MO(_FUNCTION),
@@ -55,10 +63,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [_FUNCTION] = LAYOUT_ortho_4x12(
-       _______, KC_DEL , KC_F1  , KC_F2  , KC_F3 , KC_F4 , KC_MPLY, KC_VOLU, DF(_GALLIUM), DF(_QWERTY)  , TT(_MOUSE), _______,
-       _______, QK_GESC, KC_F5  , KC_F6  , KC_F7 , KC_F8 , KC_MSTP, KC_VOLD, KC_NO       , KC_NO        , KC_NO     , _______,
-       _______, KC_PSCR, KC_F9  , KC_F10 , KC_F11, KC_F12, KC_NO  , KC_MUTE, KC_NO       , OSM(MOD_RALT), QK_BOOT   , _______,
-       _______, _______, _______, _______,_______,_______, _______, _______, _______     , _______      , _______   , _______
+       _______, KC_DEL , KC_F1  , KC_F2  , KC_F3 , KC_F4 , KC_MPLY, KC_VOLU, DF(_FOCAL2)  , DF(_QWERTY)  , TT(_MOUSE), _______,
+       _______, QK_GESC, KC_F5  , KC_F6  , KC_F7 , KC_F8 , KC_MSTP, KC_VOLD, DF(_GALLIUM) , KC_NO        , KC_NO     , _______,
+       _______, KC_PSCR, KC_F9  , KC_F10 , KC_F11, KC_F12, KC_NO  , KC_MUTE, KC_NO        , OSM(MOD_RALT), QK_BOOT   , _______,
+       _______, _______, _______, _______,_______,_______, _______, _______, _______      , _______      , _______   , _______
     ),
 };
 
@@ -110,7 +118,7 @@ const rgblight_segment_t PROGMEM my_focal_layer[] = RGBLIGHT_LAYER_SEGMENTS(
         {4, 5, HSV_OFF}
         );
 
-const rgblight_segment_t PROGMEM my_maya_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+const rgblight_segment_t PROGMEM my_gallium_layer[] = RGBLIGHT_LAYER_SEGMENTS(
         {0, 3, HSV_OFF},
         {3, 1, HSV_SPRINGGREEN},
         {4, 5, HSV_OFF}
@@ -143,12 +151,12 @@ const rgblight_segment_t PROGMEM my_mouse_layer[] = RGBLIGHT_LAYER_SEGMENTS(
 // Now define the array of layers. Later layers take precedence
 const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
         my_focal_layer,
+        my_gallium_layer,
         my_qwerty_layer,
         my_symbols_layer,
         my_numbers_layer,
         my_mouse_layer,
-        all_leds_red,
-        my_maya_layer
+        all_leds_red
         );
 
 // Set up
@@ -158,17 +166,18 @@ void keyboard_post_init_user(void) {
 }
 
 layer_state_t default_layer_state_set_user(layer_state_t state) {
-    rgblight_set_layer_state(0, layer_state_cmp(state, _GALLIUM));
-    rgblight_set_layer_state(1, layer_state_cmp(state, _QWERTY));
+    rgblight_set_layer_state(0, layer_state_cmp(state, _FOCAL2));
+    rgblight_set_layer_state(1, layer_state_cmp(state, _GALLIUM));
+    rgblight_set_layer_state(2, layer_state_cmp(state, _QWERTY));
 
     return state;
 }
 
 layer_state_t layer_state_set_user(layer_state_t state) {
-    rgblight_set_layer_state(2, layer_state_cmp(state, _SYMBOLS));
-    rgblight_set_layer_state(3, layer_state_cmp(state, _NUMBERS));
-    rgblight_set_layer_state(4, layer_state_cmp(state, _MOUSE));
-    rgblight_set_layer_state(5, layer_state_cmp(state, _FUNCTION));
+    rgblight_set_layer_state(3, layer_state_cmp(state, _SYMBOLS));
+    rgblight_set_layer_state(4, layer_state_cmp(state, _NUMBERS));
+    rgblight_set_layer_state(5, layer_state_cmp(state, _MOUSE));
+    rgblight_set_layer_state(6, layer_state_cmp(state, _FUNCTION));
 
     return state;
 }
