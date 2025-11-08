@@ -16,16 +16,15 @@ enum planck_layers {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-
 /* GRAPHITE
  * ,-----------------------------------------.                    ,-----------------------------------------.
- * | ` ~  |   1  |   2  |   3  |   4  |   5  |                    |   6  |   7  |   8  |   9  |   0  | - _  |
+ * | ` ~  |   1  |   2  |   3  |   4  |   5  |                    |   6  |   7  |   8  |   9  |   0  | = +  |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | Tab  |   B  |   L  |   D  |   W  |   Z  |                    |   '  |   F  |   O  |   U  |   J  | \ |  |
+ * | Tab  |   B  |   L  |   D  |   W  |   Z  |                    | ' "  |   F  |   O  |   U  |   J  | ; :  |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |LCTRL |   N  |   R  |   T  |   S  |   G  |-------.    ,-------|   Y  |   H  |   A  |   E  |   I  | / ?  |
+ * |LCTRL |   N  |   R  |   T  |   S  |   G  |-------.    ,-------|   Y  |   H  |   A  |   E  |   I  | , <  |
  * |------+------+------+------+------+------|   [   |    |    ]  |------+------+------+------+------+------|
- * |LShift|   Q  |   X  |   M  |   C  |   V  |-------|    |-------|   K  |   P  |   .  |   ;  |   ,  | + =  |
+ * |LShift|   Q  |   X  |   M  |   C  |   V  |-------|    |-------|   K  |   P  | . <  | - _  | / ?  | \ |  |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
  *                   | LGUI | LAlt |SYMESC| /SFTSPC /       \SFTENT\  |NUMBSP| RALT | RGUI |
  *                   |      |      |      |/       /         \      \ |      |      |      |
@@ -33,23 +32,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 
  [_GRAPHITE] = LAYOUT(
-  KC_GRV,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                       KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS,
-  KC_TAB,   KC_B,   KC_L,    KC_D,    KC_W,    KC_Z,                       KC_QUOT, KC_F,    KC_O,    KC_U,    KC_J,    KC_BSLS,
-  KC_LCTL,  KC_N,   KC_R,    KC_T,    KC_S,    KC_G,                       KC_Y,    KC_H,    KC_A,    KC_E,    KC_I,    KC_SLSH,
-  KC_LSFT,  KC_Q,   KC_X,    KC_M,    KC_C,    KC_V, KC_LBRC,   KC_RBRC,   KC_K,    KC_P,    KC_DOT, KC_SCLN,  KC_COMM, KC_PLUS,
+  KC_GRV,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                       KC_6,    KC_7,    KC_8,   KC_9,     KC_0,    KC_EQL ,
+  KC_TAB,   KC_B,   KC_L,    KC_D,    KC_W,    KC_Z,                       KC_QUOT, KC_F,    KC_O,   KC_U,     KC_J,    KC_SCLN,
+  KC_LCTL,  KC_N,   KC_R,    KC_T,    KC_S,    KC_G,                       KC_Y,    KC_H,    KC_A,   KC_E,     KC_I,    KC_COMM,
+  KC_LSFT,  KC_Q,   KC_X,    KC_M,    KC_C,    KC_V, KC_LBRC,   KC_RBRC,   KC_K,    KC_P,    KC_DOT, KC_MINS,  KC_SLSH, KC_BSLS,
                         KC_LGUI, KC_LALT, LT_SYMESC, MT_SFTSPC, MT_SFTENT, LT_NUMBSP, KC_RALT, KC_RGUI
 ),
 
 
 /* QWERTY
  * ,-----------------------------------------.                    ,-----------------------------------------.
- * | ` ~  |   1  |   2  |   3  |   4  |   5  |                    |   6  |   7  |   8  |   9  |   0  | - _  |
+ * | ` ~  |   1  |   2  |   3  |   4  |   5  |                    |   6  |   7  |   8  |   9  |   0  | = +  |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * | Tab  |   Q  |   W  |   E  |   R  |   T  |                    |   Y  |   U  |   I  |   O  |   P  | \ |  |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |LCTRL |   A  |   S  |   D  |   F  |   G  |-------.    ,-------|   H  |   J  |   K  |   L  |   ;  | / ?  |
+ * |LCTRL |   A  |   S  |   D  |   F  |   G  |-------.    ,-------|   H  |   J  |   K  |   L  |  ; : | ' "  |
  * |------+------+------+------+------+------|   [   |    |    ]  |------+------+------+------+------+------|
- * |LShift|   Z  |   X  |   C  |   V  |   B  |-------|    |-------|   N  |   M  |   ,  |   .  | ' "  | + =  |
+ * |LShift|   Z  |   X  |   C  |   V  |   B  |-------|    |-------|   N  |   M  | , <  | . >  | / ?  | - _  |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
  *                   | LGUI | LAlt |SYMESC| /SFTSPC /       \SFTENT\  |NUMBSP| RALT | RGUI |
  *                   |      |      |      |/       /         \      \ |      |      |      |
@@ -57,10 +56,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 
  [_QWERTY] = LAYOUT(
-  KC_GRV,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                       KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS,
+  KC_GRV,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                       KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_EQL,
   KC_TAB,   KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                       KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS,
-  KC_LCTL,  KC_A,   KC_S,    KC_D,    KC_F,    KC_G,                       KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_SLSH,
-  KC_LSFT,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B, KC_LBRC,   KC_RBRC,   KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_QUOT, KC_PLUS,
+  KC_LCTL,  KC_A,   KC_S,    KC_D,    KC_F,    KC_G,                       KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
+  KC_LSFT,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B, KC_LBRC,   KC_RBRC,   KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_MINS,
                         KC_LGUI, KC_LALT, LT_SYMESC, MT_SFTSPC, MT_SFTENT, LT_NUMBSP, KC_RALT, KC_RGUI
 ),
 
@@ -80,7 +79,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                   `----------------------------'           '------''--------------------'
  */
   [_ADJUST] = LAYOUT(
-  XXXXXXX, KC_F1, KC_F2, KC_F3, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  XXXXXXX, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5,                   KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, XXXXXXX,
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
