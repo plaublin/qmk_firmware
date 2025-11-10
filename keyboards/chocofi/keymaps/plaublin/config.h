@@ -31,5 +31,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // Difference between a single tap and a hold
 //#define TAPPING_TERM 175
 
+#define QUICK_TAP_TERM 0
+#define TAPPING_TERM 100
+
 // Combos are always checked with the keys from the current layer
 #undef COMBO_ONLY_FROM_LAYER
